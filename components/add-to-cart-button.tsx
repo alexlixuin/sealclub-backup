@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { ShoppingCart, Check, Minus, Plus } from "lucide-react"
 import { useCart } from "@/components/cart-provider"
 import { useBacWater } from "@/components/bac-water-context"
-import { getProductById } from "@/lib/products"
+import { getProductById, getSpecificProductImage } from "@/lib/products"
 import type { Product, SizeOption, SubscriptionOption } from "@/lib/products"
 
 interface AddToCartButtonProps {
@@ -32,7 +32,7 @@ export function AddToCartButton({ product, selectedSize, showQuantity = true, cl
     setIsAdding(true)
 
     // Get the product image URL
-    let imageUrl = product.image
+    let imageUrl = getSpecificProductImage(product) || product.image
 
     // If it's a relative path, make sure it's properly formatted
     if (imageUrl.startsWith("/")) {
@@ -70,7 +70,7 @@ export function AddToCartButton({ product, selectedSize, showQuantity = true, cl
           id: `${bacWaterProduct.id}-${selectedBacSize?.id || 'default'}`,
           name: bacWaterProduct.name,
           price: selectedBacSize?.price || bacWaterProduct.price,
-          image: bacWaterProduct.image,
+          image: getSpecificProductImage(bacWaterProduct) || bacWaterProduct.image,
           quantity: 1,
           variant: selectedBacSize?.name,
           sizeId: selectedBacSize?.id,

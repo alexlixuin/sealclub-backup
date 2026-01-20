@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { MapPin, ArrowRight, Clock } from "lucide-react"
-import { getBestSellerProducts, getFeaturedProducts, getNewProducts, type Product } from "@/lib/products"
+import { getBestSellerProducts, getFeaturedProducts, getNewProducts, getSpecificProductImage, type Product } from "@/lib/products"
 
 export function WarehouseCard() {
   const [currentProductIndex, setCurrentProductIndex] = useState(0)
@@ -101,7 +101,7 @@ export function WarehouseCard() {
                   <Link href={`/product/${currentProduct.id}`} className="block group">
                     <div className="relative aspect-square w-48 mx-auto mb-6 rounded-lg overflow-hidden bg-background/50 border border-border/50 group-hover:border-primary/50 transition-all duration-300">
                       <Image
-                        src={currentProduct.image}
+                        src={getSpecificProductImage(currentProduct) || currentProduct.image}
                         alt={currentProduct.name}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-300"

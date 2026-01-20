@@ -61,49 +61,49 @@ export const categories = [
     id: "peptides-skin",
     name: "Clinical Skincare",
     description: "Serums, creams, and treatments for barrier repair and glow",
-    image: "/images/skin-pixlr.webp",
+    image: "/images/sealclub/cream_gel.png",
   },
   {
     id: "health-wellness",
     name: "Beauty Supplements",
     description: "Daily essentials for hydration, collagen, and radiance",
-    image: "/images/deals.png",
+    image: "/images/sealclub/capsules.png",
   },
   {
     id: "metabolic-longevity",
     name: "Longevity & Vitality",
     description: "Antioxidant and adaptogenic support for long-term glow",
-    image: "/images/weight-pixlr.webp",
+    image: "/images/sealclub/capsules.png",
   },
   {
     id: "sleep-recovery",
     name: "Sleep & Recovery",
     description: "Evening rituals to support deep rest and overnight renewal",
-    image: "/images/bulk-bundle-products.png",
+    image: "/images/sealclub/capsules.png",
   },
   {
     id: "specialized-compounds",
     name: "Targeted Treatments",
     description: "SPF, scalp, and on-the-go protective care",
-    image: "/images/vials-sub-inject.png",
+    image: "/images/sealclub/dropper_bottle.png",
   },
   {
     id: "coenzymes",
     name: "Cellular Energy",
     description: "Coenzymes and NAD+ support for resilient skin",
-    image: "/images/sarms-tablet-products.webp",
+    image: "/images/sealclub/capsules.png",
   },
   {
     id: "weight-management",
     name: "Metabolic Balance",
     description: "Gentle support for steady energy and balance",
-    image: "/images/muscle-pixlr.webp",
+    image: "/images/sealclub/capsules.png",
   },
   {
     id: "dermatologics",
     name: "Dermatology Care",
     description: "Professional-grade topical support for sensitive skin",
-    image: "/images/gel.png",
+    image: "/images/sealclub/cream_gel.png",
   },
 ]
 
@@ -802,39 +802,32 @@ export function searchProducts(query: string): Product[] {
 }
 
 export function getSpecificProductImage(product: Product): string {
-  // For Bacteriostatic Water
-  if (product.id === "bacteriostatic-water") {
-    return "/images/bacterial_water.webp"
+  const detailText = [
+    product.name,
+    product.description,
+    product.quantity,
+    ...(product.sizeOptions?.map((option) => option.name) ?? []),
+  ]
+    .join(" ")
+    .toLowerCase()
+
+  const isCreamGel = /(cream|gel|balm|mask)/.test(detailText)
+  const isCapsule = /(capsule|capsules|softgel|softgels|gummy|gummies|tablet|tablets|sachet|sachets)/.test(detailText)
+  const isDropper = /(serum|ampoule|ampules|oil|elixir|tonic|dropper)/.test(detailText)
+
+  if (isCreamGel) {
+    return "/images/sealclub/cream_gel.png"
   }
 
-  // For products that include two products in one (deals)
-  if (product.name.includes("+") || (product.description && product.description.includes("combination"))) {
-    return "/images/deals.png"
+  if (isCapsule) {
+    return "/images/sealclub/capsules.png"
   }
 
-  // For products with multiple (2+) products (bundles)
-  if (product.id === "anabolic" || product.id === "glow" || product.categorySlug === "peptide-stacks") {
-    return "/images/bulk-bundle-products.png"
+  if (isDropper || /\d+\s?ml/.test(detailText)) {
+    return "/images/sealclub/dropper_bottle.png"
   }
 
-  // For SARMs and other orally digested products
-  if (product.categorySlug === "sarms" || product.categorySlug === "aromatase-inhibitors") {
-    return "/images/sarms-tablet-products.webp"
-  }
-
-  // For products that use vials and/or require subcutaneous injection
-  if (
-    product.categorySlug === "peptides-muscle" ||
-    product.categorySlug === "peptides-skin" ||
-    product.categorySlug === "growth-hormone" ||
-    product.categorySlug === "weight-management" ||
-    product.categorySlug === "coenzymes"
-  ) {
-    return "/images/vials-sub-inject.png"
-  }
-
-  // Default to category image
-  return getProductImage(product.categorySlug)
+  return "/images/sealclub/dropper_bottle.png"
 }
 
 // Helper functions for size options

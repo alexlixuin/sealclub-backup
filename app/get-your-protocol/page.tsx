@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useCart } from "@/components/cart-provider"
 import { useToast } from "@/hooks/use-toast"
-import { getProductById, getLargestSizeOption } from "@/lib/products"
+import { getProductById, getLargestSizeOption, getSpecificProductImage } from "@/lib/products"
 import ProductCard from "@/components/product-card"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Loader2, Target, Dumbbell, TrendingUp, Sparkles, Heart, Brain, ShoppingCart, FileText, Star, Info, Zap, Award, Clock, CheckCircle } from "lucide-react"
@@ -145,7 +145,7 @@ export default function GetYourProtocolPage() {
             price: largestSize.price,
             quantity: 1,
             sizeId: largestSize.id,
-            image: product.image
+            image: getSpecificProductImage(product) || product.image,
           }
           addItem(cartItem)
           addedCount++
@@ -174,9 +174,9 @@ export default function GetYourProtocolPage() {
           id: product.id,
           name: product.name,
           price: selectedSize?.price || product.price,
-          image: product.image,
+          image: getSpecificProductImage(product) || product.image,
           quantity: 1,
-          sizeId: selectedSize?.id
+          sizeId: selectedSize?.id,
         }
         
         addItem(cartItem)
@@ -191,9 +191,9 @@ export default function GetYourProtocolPage() {
         id: protocolProduct.id,
         name: protocolProduct.name,
         price: protocolProduct.price,
-        image: protocolProduct.image,
+        image: getSpecificProductImage(protocolProduct) || protocolProduct.image,
         quantity: 1,
-        sizeId: protocolProduct.sizeOptions?.[0]?.id
+        sizeId: protocolProduct.sizeOptions?.[0]?.id,
       }
       
       addItem(protocolCartItem)

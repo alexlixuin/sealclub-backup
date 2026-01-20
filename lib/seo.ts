@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import type { Review } from './types'
+import { getSpecificProductImage } from '@/lib/products'
 
 // Base SEO configuration
 export const siteConfig = {
@@ -117,7 +118,7 @@ export function generateProductMetadata(product: {
     title,
     description,
     keywords,
-    image: product.image,
+    image: getSpecificProductImage(product as any) || product.image,
     canonical: `${siteConfig.url}/product/${product.id}`,
   })
 }
@@ -185,7 +186,7 @@ export function generateProductSchema(product: {
     "@type": "Product",
     name: product.name,
     description: product.description,
-    image: product.image,
+    image: getSpecificProductImage(product as any) || product.image,
     url: `${siteConfig.url}/product/${product.id}`,
     category: product.category,
     brand: {

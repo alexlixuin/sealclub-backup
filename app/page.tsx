@@ -137,7 +137,7 @@ export default function Home() {
                       </div>
                       <div className="relative aspect-[4/5] rounded-xl overflow-hidden">
                         <Image
-                          src="/images/skin-pixlr.webp"
+                          src="/cream_gel.png"
                           alt="Clinical skincare"
                           fill
                           className="object-cover"
@@ -163,7 +163,7 @@ export default function Home() {
                       </p>
                     </div>
                     <YouTubeEmbed
-                      videoId="2Xqqtk7Gqw0"
+                      videoId=""
                       title="Formulation Ritual"
                       className="shadow-lg aspect-[4/3]"
                     />

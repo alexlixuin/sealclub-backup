@@ -1,0 +1,2155 @@
+import { generateProductId, getProductImage } from "@/lib/utils"
+
+export type SizeOption = {
+  id: string
+  name: string
+  price: number
+  inStock?: boolean
+  sizeInfo?: string // New field to explain size codes
+}
+
+export type SubscriptionOption = {
+  id: string
+  name: string
+  price: number
+  interval: 'month' | 'year'
+  intervalCount: number
+  description?: string
+}
+
+export type Product = {
+  id: string
+  name: string
+  category: string
+  // Replace single categorySlug with an array of category slugs
+  categorySlug: string // Kept for backward compatibility
+  categoryIds: string[] // New field for multiple categories
+  description: string
+  price: number // Base price (lowest price option)
+  sizeOptions?: SizeOption[] // New field for size options
+  subscriptionOptions?: SubscriptionOption[] // New field for subscription options
+  image: string
+  quantity: string
+  chemicalName?: string
+  casNumber?: string
+  concentration?: string
+  featured?: boolean
+  new?: boolean
+  bestSeller?: boolean
+  purity?: string
+  storage?: string
+  halfLife?: string
+  molecularFormula?: string
+  molecularWeight?: string
+  relatedProducts?: string[]
+  sizeInfo?: string // New field to explain size codes for products
+}
+
+export const categories = [
+  {
+    id: "sarms",
+    name: "SARMs",
+    description: "SARMs for muscle growth, strength, and recomposition",
+    image: "/images/sarms-tablet-products.webp",
+  },
+  {
+    id: "growth-hormone",
+    name: "Growth Hormone",
+    description: "Growth hormone secretagogues",
+    image: "/images/vials-sub-inject.png",
+  },
+  {
+    id: "peptides-muscle",
+    name: "Peptides for Muscle",
+    description: "Peptides for muscle growth and regeneration",
+    image: "/images/muscle-pixlr.webp",
+  },
+  {
+    id: "peptides-skin",
+    name: "Peptides for Skin",
+    description: "Peptides for skin health and tissue regeneration",
+    image: "/images/skin-pixlr.webp",
+  },
+  {
+    id: "weight-management",
+    name: "Weight Management",
+    description: "Peptides for weight management and metabolic research",
+    image: "/images/weight-pixlr.webp",
+  },
+  {
+    id: "aromatase-inhibitors",
+    name: "Aromatase Inhibitors",
+    description: "Aromatase inhibitors for estrogen suppression and testosterone support",
+    image: "/images/vials-sub-inject.png",
+  },
+  {
+    id: "peptide-stacks",
+    name: "Peptide Stacks",
+    description: "Peptide stacks for muscle growth and fat reduction",
+    image: "/images/bulk-bundle-products.png",
+  },
+  {
+    id: "coenzymes",
+    name: "Coenzymes",
+    description: "Coenzymes for cellular metabolism",
+    image: "/images/deals.png",
+  },
+  {
+    id: "consultations",
+    name: "Consultations",
+    description: "Professional peptide protocol consultations and guidance",
+    image: "/guide.png",
+  },
+  {
+    id: "diluents",
+    name: "Diluents",
+    description: "Diluents for peptide reconstitution",
+    image: "/images/bacterial_water.webp",
+  },
+  {
+    id: "dermatologics",
+    name: "Topical Dermatologics",
+    description: "Prescription Medication for Skin",
+    image: "/images/gel.png",
+  },
+  {
+    id: "aas",
+    name: "Anabolic Androgenic Steroids",
+    description: "Anabolic Androgenic Steroids (Injectables & Orals)",
+    image: "/images/vials-sub-inject.png",
+  },
+  {
+    id: "recovery-healing",
+    name: "Recovery & Healing",
+    description: "Peptides for recovery and healing",
+    image: "/images/vials-sub-inject.png",
+  },
+  {
+    id: "sexual-health",
+    name: "Sexual Health & Libido",
+    description: "Peptides for sexual health and libido enhancement",
+    image: "/images/vials-sub-inject.png",
+  },
+  {
+    id: "cognitive-neurological",
+    name: "Cognitive & Neurological",
+    description: "Peptides for cognitive enhancement and neurological support",
+    image: "/images/vials-sub-inject.png",
+  },
+  {
+    id: "sleep-recovery",
+    name: "Sleep & Recovery",
+    description: "Peptides for sleep enhancement and recovery",
+    image: "/images/vials-sub-inject.png",
+  },
+  {
+    id: "hormones-regulators",
+    name: "Hormones & Regulators",
+    description: "Hormone regulating peptides and compounds",
+    image: "/images/vials-sub-inject.png",
+  },
+  {
+    id: "metabolic-longevity",
+    name: "Metabolic & Longevity",
+    description: "Peptides for metabolic health and longevity",
+    image: "/images/vials-sub-inject.png",
+  },
+  {
+    id: "specialized-compounds",
+    name: "Specialized Compounds",
+    description: "Specialized research compounds and peptides",
+    image: "/images/vials-sub-inject.png",
+  },
+  {
+    id: "health-wellness",
+    name: "Health & Wellness",
+    description: "General health and wellness compounds",
+    image: "/images/vials-sub-inject.png",
+  },
+]
+
+export const products: Product[] = [
+  
+  {
+    id: generateProductId("Ipamorelin"),
+    name: "Ipamorelin – Research-Grade GH Secretagogue",
+    category: "Growth hormone secretagogues",
+    categorySlug: "growth-hormone",
+    categoryIds: ["growth-hormone"],
+    description:
+      "Ipamorelin is a growth hormone secretagogue peptide developed for research purposes. This compound is designed for laboratory testing and scientific research only. Ipamorelin has been studied for its potential to stimulate the release of growth hormone in preclinical models.",
+    price: 18.0,
+    sizeOptions: [
+      { id: "ip2", name: "IP2", price: 18.0, inStock: true },
+      { id: "ip5", name: "IP5", price: 30.0, inStock: true },
+      { id: "ip10", name: "IP10", price: 45.0, inStock: true },
+    ],
+    subscriptionOptions: [
+      { id: "ip2-monthly", name: "IP2 Monthly", price: 16.20, interval: "month", intervalCount: 1, description: "2mg monthly delivery" },
+      { id: "ip5-monthly", name: "IP5 Monthly", price: 27.00, interval: "month", intervalCount: 1, description: "5mg monthly delivery" },
+      { id: "ip10-monthly", name: "IP10 Monthly", price: 40.50, interval: "month", intervalCount: 1, description: "10mg monthly delivery" },
+    ],
+    image: getProductImage("growth-hormone"),
+    quantity: "IP5",
+    chemicalName: "H-Aib-His-D-2-Nal-D-Phe-Lys-NH2",
+    casNumber: "170851-70-4",
+    concentration: "5mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~2 hours",
+    molecularFormula: "C₃₈H₄₉N₉O₅",
+    molecularWeight: "711.86 g/mol",
+    relatedProducts: ["mk-677-ibutamoren", "cjc-1295", "ghrp-6"],
+  },
+  {
+    id: generateProductId("CJC-1295"),
+    name: "CJC-1295 – Research-Grade Growth Hormone Secretagogue",
+    category: "Growth hormone secretagogues",
+    categorySlug: "growth-hormone",
+    categoryIds: ["growth-hormone"],
+    description:
+      "CJC-1295 is a synthetic growth hormone releasing hormone (GHRH) analog developed for research purposes. This compound is designed for laboratory testing and scientific research only. CJC-1295 has been studied for its potential to increase growth hormone secretion in preclinical models.",
+    price: 30.0,
+    sizeOptions: [
+      { id: "cnd2-no-dac", name: "CND2 (DAC Not Included)", price: 15.0, inStock: true },
+      { id: "cnd2-dac", name: "CND2 (DAC Included)", price: 22.5, inStock: true },
+      { id: "cnd5-no-dac", name: "CND5 (DAC Not Included)", price: 45.0, inStock: true },
+      { id: "cnd5-dac", name: "CND5 (DAC Included)", price: 52.5, inStock: true },
+      { id: "cnd10-no-dac", name: "CND10 (DAC Not Included)", price: 82.5, inStock: true },
+      { id: "cnd10-dac", name: "CND10 (DAC Included)", price: 90.0, inStock: true },
+    ],
+    subscriptionOptions: [
+      { id: "cnd2-no-dac-monthly", name: "CND2 (No DAC) Monthly", price: 13.50, interval: "month", intervalCount: 1, description: "2mg monthly delivery" },
+      { id: "cnd2-dac-monthly", name: "CND2 (DAC) Monthly", price: 20.25, interval: "month", intervalCount: 1, description: "2mg with DAC monthly delivery" },
+      { id: "cnd5-no-dac-monthly", name: "CND5 (No DAC) Monthly", price: 40.50, interval: "month", intervalCount: 1, description: "5mg monthly delivery" },
+      { id: "cnd5-dac-monthly", name: "CND5 (DAC) Monthly", price: 47.25, interval: "month", intervalCount: 1, description: "5mg with DAC monthly delivery" },
+      { id: "cnd10-no-dac-monthly", name: "CND10 (No DAC) Monthly", price: 74.25, interval: "month", intervalCount: 1, description: "10mg monthly delivery" },
+      { id: "cnd10-dac-monthly", name: "CND10 (DAC) Monthly", price: 81.00, interval: "month", intervalCount: 1, description: "10mg with DAC monthly delivery" },
+    ],
+    image: getProductImage("growth-hormone"),
+    quantity: "CND5 (DAC Included)",
+    chemicalName: "Modified GRF 1-29",
+    casNumber: "863288-34-0",
+    concentration: "5mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~8 days (with DAC)",
+    molecularFormula: "C₁₅₂H₂₅₂N₄₄O₄₂",
+    molecularWeight: "3367.95 g/mol",
+    relatedProducts: ["mk-677-ibutamoren", "ipamorelin", "ghrp-6"],
+  },
+  {
+    id: generateProductId("IGF-1 LR3"),
+    name: "IGF-1 LR3 – Research-Grade Insulin-Like Growth Factor Peptide",
+    category: "Peptides for muscle growth and regeneration",
+    categorySlug: "peptides-muscle",
+    categoryIds: ["peptides-muscle"],
+    description:
+      "IGF-1 LR3 is a modified version of insulin-like growth factor 1 (IGF-1) developed for research purposes. This compound is designed for laboratory testing and scientific research only. IGF-1 LR3 has been studied for its potential anabolic properties in preclinical models.",
+    price: 12.0,
+    sizeOptions: [
+      { id: "ig01", name: "IG01", price: 12.0, inStock: true },
+      { id: "ig1", name: "IG1", price: 60.0, inStock: true },
+    ],
+    image: getProductImage("peptides-muscle"),
+    quantity: "IG1",
+    chemicalName: "Long R3 Insulin-like Growth Factor-I",
+    casNumber: "946870-92-4",
+    concentration: "1mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~20-30 hours",
+    molecularFormula: "C₃₃₁H₅₁₈N₉₄O₉₉S₇",
+    molecularWeight: "9111.4 g/mol",
+    relatedProducts: ["hgh-191aa", "mk-677-ibutamoren", "cjc-1295"],
+  },
+  {
+    id: generateProductId("HGH 191AA"),
+    name: "HGH 191AA – Recombinant Research Peptide Hormone",
+    category: "Peptides for muscle growth and regeneration",
+    categorySlug: "peptides-muscle",
+    // Updated to include multiple categories
+    categoryIds: ["peptides-muscle", "growth-hormone"],
+    description:
+      "HGH 191AA is a recombinant human growth hormone developed for research purposes. This compound is designed for laboratory testing and scientific research only. HGH 191AA has been studied for its potential effects on growth, metabolism, and tissue regeneration in preclinical models.",
+    price: 48.0,
+    sizeOptions: [
+      { id: "h10-iu", name: "H10 (iu)", price: 35.0, inStock: true },
+      { id: "h12-iu", name: "H12 (iu)", price: 75.0, inStock: true },
+    ],
+    subscriptionOptions: [
+      { id: "h10-monthly", name: "H10 Monthly", price: 31.50, interval: "month", intervalCount: 1, description: "10 IU monthly delivery" },
+      { id: "h12-monthly", name: "H12 Monthly", price: 67.50, interval: "month", intervalCount: 1, description: "12 IU monthly delivery" },
+    ],
+    image: getProductImage("peptides-muscle"),
+    quantity: "H10 (iu)",
+    chemicalName: "Somatropin (191 amino acid sequence)",
+    casNumber: "12629-01-5",
+    concentration: "10 IU",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~3-5 hours",
+    molecularFormula: "C₉₉₀H₁₅₂₈N₂₆₂O₃₀₀S₇",
+    molecularWeight: "22124 g/mol",
+    relatedProducts: ["igf-1-lr3", "mk-677-ibutamoren", "cjc-1295"],
+  },
+  {
+    id: generateProductId("GLOW"),
+    name: "GLOW – Skin Peptide Stack (BPC-157, GHK-Cu, TB500)",
+    category: "Peptides for skin health and tissue regeneration",
+    categorySlug: "peptides-skin",
+    // Updated to include multiple categories
+    categoryIds: ["peptides-skin", "peptide-stacks"],
+    description:
+      "GLOW is a peptide stack containing BPC-157, GHK-Cu, and TB500, developed for research purposes. This compound is designed for laboratory testing and scientific research only. The peptides in this stack have been studied for their potential effects on tissue regeneration and skin health in preclinical models.",
+    price: 110.0,
+    sizeOptions: [{ id: "GLOW70", name: "GLOW70", price: 135.0, inStock: true }],
+    image: getProductImage("peptides-skin"),
+    quantity: "GLOW70",
+    chemicalName: "Peptide stack (BPC-157, GHK-Cu, TB500)",
+    casNumber: "Multiple",
+    concentration: "50MG GHK-CU, 10MG BPC-157 TB-500",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    new: true,
+    featured: true,
+    relatedProducts: ["bpc-157", "tb-500", "ghk-cu"],
+  },
+  {
+    id: generateProductId("BPC-157"),
+    name: "BPC-157 – Synthetic Research Peptide (Pentadecapeptide)",
+    category: "Peptides for skin health and tissue regeneration",
+    categorySlug: "peptides-skin",
+    categoryIds: ["peptides-skin"],
+    description:
+      "BPC-157 is a synthetic peptide composed of 15 amino acids that is being studied for its potential regenerative properties. This compound is designed for laboratory testing and scientific research only. BPC-157 has been studied for its potential effects on tissue healing and regeneration in preclinical models.",
+    price: 75.0,
+    sizeOptions: [
+      { id: "bc2", name: "BC2", price: 75.0, inStock: true },
+      { id: "bc5", name: "BC5", price: 135.0, inStock: true },
+      { id: "bc10", name: "BC10", price: 225.0, inStock: true },
+      { id: "bc15", name: "BC15", price: 300.0, inStock: true },
+    ],
+    image: getProductImage("peptides-skin"),
+    quantity: "BC5",
+    chemicalName: "Pentadecapeptide BPC 157",
+    casNumber: "137525-51-0",
+    concentration: "5mg",
+    bestSeller: true,
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~4-6 hours",
+    molecularFormula: "C₆₂H₉₈N₁₆O₂₂",
+    molecularWeight: "1419.6 g/mol",
+    relatedProducts: ["tb-500", "ghk-cu", "glow"],
+  },
+  {
+    id: generateProductId("Tirzepatide"),
+    name: "Tirzepatide – GIP/GLP-1r Analog for Metabolic Research Use",
+    category: "Peptides for weight management and metabolic research",
+    categorySlug: "weight-management",
+    categoryIds: ["weight-management"],
+    description:
+      "Tirzepatide is a dual GIP and GLP-1 receptor agonist peptide developed for research purposes. This compound is designed for laboratory testing and scientific research only. Tirzepatide has been studied for its potential effects on glucose metabolism and weight management in preclinical models.",
+    price: 52.5,
+    sizeOptions: [
+      { id: "t5", name: "T5", price: 52.5, inStock: true },
+      { id: "t10", name: "T10", price: 75.0, inStock: true },
+      { id: "t20", name: "T20", price: 142.5, inStock: true },
+    ],
+    subscriptionOptions: [
+      { id: "t5-monthly", name: "T5 Monthly", price: 47.25, interval: "month", intervalCount: 1, description: "5mg monthly delivery" },
+      { id: "t10-monthly", name: "T10 Monthly", price: 67.50, interval: "month", intervalCount: 1, description: "10mg monthly delivery" },
+      { id: "t20-monthly", name: "T20 Monthly", price: 128.25, interval: "month", intervalCount: 1, description: "20mg monthly delivery" },
+    ],
+    image: getProductImage("weight-management"),
+    quantity: "T10",
+    chemicalName: "Tirzepatide",
+    casNumber: "2023788-19-2",
+    concentration: "10mg",
+    new: true,
+    featured: true,
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~5 days",
+    molecularFormula: "C₄₂₅H₆₈₇N₁₂₃O₁₄₀S₂",
+    molecularWeight: "4813.5 g/mol",
+    relatedProducts: ["semaglutide", "retatrutide", "cagrilintide"],
+  },
+  {
+    id: generateProductId("Semaglutide"),
+    name: "Semaglutide – GLP-1 Receptor Agonist for Laboratory Testing",
+    category: "Peptides for weight management and metabolic research",
+    categorySlug: "weight-management",
+    categoryIds: ["weight-management"],
+    description:
+      "Semaglutide is a GLP-1 receptor agonist peptide developed for research purposes. This compound is designed for laboratory testing and scientific research only. Semaglutide has been studied for its potential effects on glucose metabolism and weight management in preclinical models.",
+    price: 7.5,
+    sizeOptions: [
+      { id: "sm2", name: "SM2", price: 7.5, inStock: true },
+      { id: "sm5", name: "SM5", price: 37.5, inStock: true },
+      { id: "sm10", name: "SM10", price: 67.5, inStock: true },
+      { id: "sm15", name: "SM15", price: 135.0, inStock: true },
+      { id: "sm20", name: "SM20", price: 225.0, inStock: true },
+      { id: "sm30", name: "SM30", price: 270.0, inStock: true },
+    ],
+    image: getProductImage("weight-management"),
+    quantity: "SM10",
+    chemicalName: "Semaglutide",
+    casNumber: "910463-68-2",
+    concentration: "10mg",
+    bestSeller: true,
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~7 days",
+    molecularFormula: "C₁₈₇H₂₉₁N₄₅O₅₉",
+    molecularWeight: "4113.6 g/mol",
+    relatedProducts: ["tirzepatide", "retatrutide", "cagrilintide"],
+  },
+  {
+    id: generateProductId("Retatrutide"),
+    name: "Retatrutide – (GIPR/GLP-1r Agonist)",
+    category: "Peptides for weight management and metabolic research",
+    categorySlug: "weight-management",
+    categoryIds: ["weight-management"],
+    description:
+      "Retatrutide is a triple receptor agonist peptide developed for research purposes. This compound is designed for laboratory testing and scientific research only. Retatrutide has been studied for its potential effects on glucose metabolism and weight management in preclinical models.",
+    price: 60.0,
+    sizeOptions: [
+      { id: "rt5", name: "RT5", price: 60.0, inStock: true },
+      { id: "rt10", name: "RT10", price: 97.5, inStock: true },
+      { id: "rt20", name: "RT20", price: 165.0, inStock: true },
+    ],
+    subscriptionOptions: [
+      { id: "rt5-monthly", name: "RT5 Monthly", price: 54.00, interval: "month", intervalCount: 1, description: "5mg monthly delivery" },
+      { id: "rt10-monthly", name: "RT10 Monthly", price: 87.75, interval: "month", intervalCount: 1, description: "10mg monthly delivery" },
+      { id: "rt20-monthly", name: "RT20 Monthly", price: 148.50, interval: "month", intervalCount: 1, description: "20mg monthly delivery" },
+    ],
+    image: getProductImage("weight-management"),
+    quantity: "RT10",
+    chemicalName: "Retatrutide",
+    casNumber: "N/A",
+    concentration: "10mg",
+    new: true,
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~6-8 days",
+    relatedProducts: ["tirzepatide", "semaglutide", "cagrilintide"],
+  },
+  {
+    id: generateProductId("Cagrilintide"),
+    name: "Cagrilintide – Amylin Receptor Analog Peptide (Research-Grade)",
+    category: "Peptides for weight management and metabolic research",
+    categorySlug: "weight-management",
+    categoryIds: ["weight-management"],
+    description:
+      "Cagrilintide is an amylin receptor analog peptide developed for research purposes. This compound is designed for laboratory testing and scientific research only. Cagrilintide has been studied for its potential effects on appetite regulation and weight management in preclinical models.",
+    price: 75.0,
+    sizeOptions: [
+      { id: "cgl5", name: "CGL5", price: 75.0, inStock: true },
+      { id: "cgl10", name: "CGL10", price: 135.0, inStock: true },
+    ],
+    image: getProductImage("weight-management"),
+    quantity: "CGL5",
+    chemicalName: "Cagrilintide",
+    casNumber: "N/A",
+    concentration: "5mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~6-7 days",
+    relatedProducts: ["tirzepatide", "semaglutide", "retatrutide"],
+  },
+  {
+    id: generateProductId("Tirzepatide-Semaglutide-Stack"),
+    name: "Tirzepatide + Semaglutide Stack – Research Combination",
+    category: "Peptides for weight management and metabolic research",
+    categorySlug: "weight-management",
+    // Updated to include multiple categories
+    categoryIds: ["weight-management", "peptide-stacks"],
+    description:
+      "This research combination stack contains Tirzepatide and Semaglutide, developed for research purposes. This compound is designed for laboratory testing and scientific research only. These peptides have been studied for their potential effects on glucose metabolism and weight management in preclinical models.",
+    price: 82.49,
+    sizeOptions: [
+      { id: "t5-sm5", name: "T5 + SM5", price: 82.49, inStock: true },
+      { id: "t10-sm10", name: "T10 + SM10", price: 133.49, inStock: true },
+    ],
+    image: getProductImage("weight-management"),
+    quantity: "T5 + SM5",
+    chemicalName: "Tirzepatide + Semaglutide",
+    casNumber: "Multiple",
+    concentration: "Combined",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    new: true,
+    relatedProducts: ["tirzepatide", "semaglutide", "retatrutide"],
+  },
+  {
+    id: generateProductId("Retatrutide-Semaglutide-Stack"),
+    name: "Retatrutide + Semaglutide Stack – Research Combination",
+    category: "Peptides for weight management and metabolic research",
+    categorySlug: "weight-management",
+    // Updated to include multiple categories
+    categoryIds: ["weight-management", "peptide-stacks"],
+    description:
+      "This research combination stack contains Retatrutide and Semaglutide, developed for research purposes. This compound is designed for laboratory testing and scientific research only. These peptides have been studied for their potential effects on glucose metabolism and weight management in preclinical models.",
+    price: 82.49,
+    sizeOptions: [
+      { id: "rt5-sm5", name: "RT5 + SM5", price: 82.49, inStock: true },
+      { id: "rt10-sm10", name: "RT10 + SM10", price: 133.49, inStock: true },
+    ],
+    image: getProductImage("weight-management"),
+    quantity: "RT5 + SM5",
+    chemicalName: "Retatrutide + Semaglutide",
+    casNumber: "Multiple",
+    concentration: "Combined",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    new: true,
+    relatedProducts: ["retatrutide", "semaglutide", "tirzepatide"],
+  },
+  {
+    id: generateProductId("Retatrutide-Tirzepatide-Stack"),
+    name: "Retatrutide + Tirzepatide Stack – Research Combination",
+    category: "Peptides for weight management and metabolic research",
+    categorySlug: "weight-management",
+    // Updated to include multiple categories
+    categoryIds: ["weight-management", "peptide-stacks"],
+    description:
+      "This research combination stack contains Retatrutide and Tirzepatide, developed for research purposes. This compound is designed for laboratory testing and scientific research only. These peptides have been studied for their potential effects on glucose metabolism and weight management in preclinical models.",
+    price: 97.49,
+    sizeOptions: [
+      { id: "rt5-t5", name: "RT5 + T5", price: 97.49, inStock: true },
+      { id: "rt10-t10", name: "RT10 + T10", price: 139.49, inStock: true },
+    ],
+    image: getProductImage("weight-management"),
+    quantity: "RT5 + T5",
+    chemicalName: "Retatrutide + Tirzepatide",
+    casNumber: "Multiple",
+    concentration: "Combined",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    new: true,
+    relatedProducts: ["retatrutide", "tirzepatide", "semaglutide"],
+  },
+  {
+    id: generateProductId("Exemestane"),
+    name: "Exemestane – Research Grade Aromatase Inhibitor",
+    category: "Aromatase inhibitors for estrogen suppression and testosterone support",
+    categorySlug: "aromatase-inhibitors",
+    categoryIds: ["aromatase-inhibitors"],
+    description:
+      "Exemestane is a steroidal aromatase inhibitor developed for research purposes. This compound is designed for laboratory testing and scientific research only. Exemestane has been studied for its potential to inhibit the aromatase enzyme in preclinical models. This product is not kept at any warehouses and needs to be special sent to our dispatch centre, additional waiting times apply. ",
+    price: 135.0,
+    sizeOptions: [{ id: "25mg-100-tablets", name: "25MG / 100 Tablets (1 Bottle)", price: 135.0, inStock: false }],
+    image: getProductImage("aromatase-inhibitors"),
+    quantity: "25MG / 100 Tablets (1 Bottle)",
+    chemicalName: "6-Methylideneandrosta-1,4-diene-3,17-dione",
+    casNumber: "107868-30-4",
+    concentration: "25mg",
+    purity: "≥98% (HPLC)",
+    storage: "Store in a cool, dry place",
+    halfLife: "~24 hours",
+    molecularFormula: "C₂₀H₂₄O₂",
+    molecularWeight: "296.4 g/mol",
+    relatedProducts: ["anastrozole", "letrozole", "arimistane"],
+  },
+  {
+    id: generateProductId("NAD+"),
+    name: "NAD+ (Buffered) – Oxidized Nicotinamide Coenzyme (Research Grade)",
+    category: "Coenzymes for cellular metabolism",
+    categorySlug: "coenzymes",
+    categoryIds: ["coenzymes"],
+    description:
+      "NAD+ is an oxidized nicotinamide coenzyme developed for research purposes. This compound is designed for laboratory testing and scientific research only. NAD+ has been studied for its potential role in cellular metabolism and aging in preclinical models.",
+    price: 150.0,
+    sizeOptions: [
+      { id: "nj100", name: "NJ100", price: 150.0, inStock: true },
+      { id: "nj500", name: "NJ500", price: 225.0, inStock: true },
+      { id: "nj1k", name: "NJ1K", price: 435.0, inStock: true },
+    ],
+    image: getProductImage("coenzymes"),
+    quantity: "NJ100",
+    chemicalName: "Nicotinamide adenine dinucleotide",
+    casNumber: "53-84-9",
+    concentration: "100mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~1-2 hours",
+    molecularFormula: "C₂₁H₂₇N₇O₁₄P₂",
+    molecularWeight: "663.43 g/mol",
+    relatedProducts: ["nad+", "nmn", "resveratrol"],
+  },
+  {
+    id: generateProductId("Isotretinoin"),
+    name: "Isotretinoin – Oral Retinoid for Dermatological Research",
+    category: "Prescription Medication for Skin",
+    categorySlug: "dermatologics",
+    categoryIds: ["dermatologics"],
+    description:
+      "Isotretinoin is a synthetic retinoid compound developed for research purposes. This compound is designed for laboratory testing and scientific research only. Isotretinoin has been studied for its potential effects on sebaceous gland function and cellular differentiation in preclinical models. Each strip contains 10 tablets for precise dosing in research applications.",
+    price: 20.0,
+    sizeOptions: [
+      { id: "10mg-10-tablets", name: "10mg x 10 Tablets (1 Strip)", price: 20.0, inStock: true },
+      { id: "20mg-10-tablets", name: "20mg x 10 Tablets (1 Strip)", price: 35.0, inStock: true },
+    ],
+    image: getProductImage("sarms"),
+    quantity: "10mg x 10 Tablets (1 Strip)",
+    chemicalName: "13-cis-Retinoic acid",
+    casNumber: "4759-48-2",
+    concentration: "10mg",
+    purity: "≥98% (HPLC)",
+    storage: "Store in a cool, dry place, protected from light",
+    halfLife: "~10-20 hours",
+    molecularFormula: "C₂₀H₂₈O₂",
+    molecularWeight: "300.44 g/mol",
+    relatedProducts: ["tretinoin", "adapalene", "tazarotene"],
+    new: true,
+  },
+    {
+    id: generateProductId("Isotretinoin"),
+    name: "Isotretinoin – Oral Retinoid for Dermatological Research",
+    category: "Prescription Medication for Skin",
+    categorySlug: "dermatologics",
+    categoryIds: ["dermatologics"],
+    description:
+      "Isotretinoin is a synthetic retinoid compound developed for research purposes. This compound is designed for laboratory testing and scientific research only. Isotretinoin has been studied for its potential effects on sebaceous gland function and cellular differentiation in preclinical models. Each strip contains 10 tablets for precise dosing in research applications.",
+    price: 20.0,
+    sizeOptions: [
+      { id: "10mg-10-tablets", name: "10mg x 10 Tablets (1 Strip)", price: 20.0, inStock: true },
+      { id: "20mg-10-tablets", name: "20mg x 10 Tablets (1 Strip)", price: 35.0, inStock: true },
+    ],
+    image: getProductImage("sarms"),
+    quantity: "10mg x 10 Tablets (1 Strip)",
+    chemicalName: "13-cis-Retinoic acid",
+    casNumber: "4759-48-2",
+    concentration: "10mg",
+    purity: "≥98% (HPLC)",
+    storage: "Store in a cool, dry place, protected from light",
+    halfLife: "~10-20 hours",
+    molecularFormula: "C₂₀H₂₈O₂",
+    molecularWeight: "300.44 g/mol",
+    relatedProducts: ["tretinoin", "adapalene", "tazarotene"],
+    new: true,
+  },
+  {
+    id: generateProductId("Bacteriostatic Water"),
+    name: "Bacteriostatic Water – 10mL (Sterile Diluent for Reconstitution)",
+    category: "Diluents for peptide reconstitution",
+    categorySlug: "diluents",
+    categoryIds: ["diluents"],
+    description:
+      "Bacteriostatic Water is a sterile water solution containing 0.9% benzyl alcohol that prevents bacteria growth. It is used for reconstitution of lyophilized (freeze-dried) medications and peptides.",
+    price: 22.5,
+    sizeOptions: [{ id: "10ml", name: "10mL", price: 22.5, inStock: true }],
+    image: getProductImage("diluents"),
+    quantity: "10mL",
+    chemicalName: "Water with 0.9% Benzyl Alcohol",
+    casNumber: "N/A",
+    concentration: "10mL",
+    storage: "Store at room temperature",
+    relatedProducts: ["sterile-water", "sodium-chloride", "acetic-acid"],
+  },
+    {
+    id: generateProductId("Tretinoin Gel USP"),
+    name: "A Ret Gel 0.05% (Tretinoin Gel USP)",
+    category: "Peptides for skin health and tissue regeneration",
+    categorySlug: "dermatologics",
+    categoryIds: ["dermatologics"],
+    description:
+      "A Ret Gel 0.05% (20 gm) Tretinoin Gel USP is a topical retinoid treatment used to manage acne and reduce fine lines, wrinkles, and hyperpigmentation. It promotes skin cell turnover, clears clogged pores, and improves overall skin texture and tone.",
+    price: 22.5,
+    sizeOptions: [{ id: "0.05", name: "0.05%", price: 15.00, inStock: true }],
+    image: getProductImage("dermatologics"),
+    quantity: "0.05",
+    chemicalName: "Tretinoin (all-trans retinoic acid) 0.05%",
+    new: true,
+    purity: "≥95% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~48-72 hours",
+    molecularFormula: "C₁₈₅H₂₉₅N₅₅O₅₃S₂",
+    molecularWeight: "4201.8 g/mol",
+    relatedProducts: ["mazdutide-glp1-agonist"],
+  },
+  {
+    id: generateProductId("Peptide Protocol"),
+    name: "Peptide Protocol Consultation – Personalized Research Guidance",
+    category: "Professional peptide protocol consultations and guidance",
+    categorySlug: "consultations",
+    categoryIds: ["consultations"],
+    description:
+      "Get a personalized peptide protocol consultation designed specifically for your research goals. Our AI-powered system analyzes your objectives and provides detailed guidance including recommended peptides, dosing protocols, timing, and comprehensive PDF documentation with follow-up support for your research applications.",
+    price: 100.0,
+    sizeOptions: [{ id: "consultation", name: "Full Protocol Consultation", price: 100.0, inStock: true }],
+    image: getProductImage("consultations"),
+    quantity: "Full Protocol Consultation",
+    chemicalName: "Professional Consultation Service",
+    casNumber: "N/A",
+    concentration: "Comprehensive Protocol",
+    new: true,
+    purity: "Professional Grade",
+    storage: "Digital delivery via email",
+    halfLife: "Lifetime access to protocol",
+    molecularFormula: "Personalized Research Protocol",
+    molecularWeight: "Digital PDF + Follow-up Sessions",
+    relatedProducts: ["bacteriostatic-water"],
+  },
+  // NEW PRODUCTS
+  {
+    id: generateProductId("TB-500 - Thymosin Beta-4 Acetate"),
+    name: "TB-500 - Thymosin Beta-4 Acetate",
+    category: "Peptides for recovery and healing",
+    categorySlug: "recovery-healing",
+    categoryIds: ["recovery-healing"],
+    description:
+      "TB-500 (Thymosin Beta-4 Acetate) is a synthetic peptide that mimics the naturally occurring thymosin beta-4 protein. Research indicates potential applications in tissue repair, wound healing, and cellular regeneration studies. For research purposes only.",
+    price: 42.0,
+    sizeOptions: [
+      { id: "bt2", name: "2mg", price: 42.0, inStock: true },
+      { id: "bt5", name: "5mg", price: 70.0, inStock: true },
+      { id: "bt10", name: "10mg", price: 126.88, inStock: true },
+    ],
+    image: getProductImage("recovery-healing"),
+    quantity: "2mg/5mg/10mg",
+    chemicalName: "Thymosin Beta-4 Acetate",
+    casNumber: "77591-33-4",
+    concentration: "2mg/5mg/10mg",
+    bestSeller: true,
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~2.5 hours",
+    molecularFormula: "C₂₁₂H₃₅₀N₅₆O₇₈S",
+    molecularWeight: "4963.4 g/mol",
+    relatedProducts: ["bpc-tb-combination", "klow80-recovery-blend"],
+  },
+  {
+    id: generateProductId("BPC + TB Combination - Recovery Stack"),
+    name: "BPC + TB Combination - Recovery Stack",
+    category: "Peptide stacks for muscle growth and fat reduction",
+    categorySlug: "peptide-stacks",
+    categoryIds: ["peptide-stacks", "recovery-healing"],
+    description:
+      "BPC + TB Combination is a synergistic peptide stack combining BPC-157 and TB-500 for enhanced recovery research. This combination is designed to study the potential synergistic effects of these two healing peptides. For research purposes only.",
+    price: 91.88,
+    sizeOptions: [
+      { id: "bb10", name: "5mg+5mg (BPC+TB)", price: 91.88, inStock: true },
+      { id: "bb20", name: "10mg+10mg (BPC+TB)", price: 183.75, inStock: true },
+    ],
+    image: getProductImage("peptide-stacks"),
+    quantity: "5mg+5mg/10mg+10mg",
+    chemicalName: "BPC-157 + TB-500 Combination",
+    casNumber: "137525-51-0 + 77591-33-4",
+    concentration: "5mg+5mg/10mg+10mg",
+    featured: true,
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~2-4 hours",
+    molecularFormula: "Combined peptides",
+    molecularWeight: "Combined molecular weight",
+    relatedProducts: ["tb-500-thymosin", "klow80-recovery-blend"],
+  },
+  {
+    id: generateProductId("KLOW80 - Multi-Peptide Recovery Blend"),
+    name: "KLOW80 - Multi-Peptide Recovery Blend",
+    category: "Peptide stacks for muscle growth and fat reduction",
+    categorySlug: "peptide-stacks",
+    categoryIds: ["peptide-stacks", "recovery-healing", "peptides-skin"],
+    description:
+      "KLOW80 is an advanced multi-peptide recovery blend containing BPC-157 (10mg), GHK-CU (50mg), TB-500 (10mg), and KPV (10mg). This comprehensive formula is designed for advanced recovery and regeneration research applications. For research purposes only.",
+    price: 227.5,
+    sizeOptions: [{ id: "klow80", name: "80mg (BPC-157 10mg + GHK-CU 50mg + TB500 10mg + KPV 10mg)", price: 227.5, inStock: true }],
+    image: getProductImage("peptide-stacks"),
+    quantity: "80mg blend",
+    chemicalName: "BPC-157 + GHK-CU + TB-500 + KPV Blend",
+    casNumber: "Multi-compound blend",
+    concentration: "80mg total",
+    new: true,
+    bestSeller: true,
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "Variable per component",
+    molecularFormula: "Multi-peptide blend",
+    molecularWeight: "Combined molecular weight",
+    relatedProducts: ["tb-500-thymosin", "ghk-cu-copper-peptide", "bpc-tb-combination"],
+  },
+  // Cosmetic & Anti-Aging Peptides
+  {
+    id: generateProductId("ghkcu"),
+    name: "GHK-CU - Regenerative Copper Peptide",
+    category: "Peptides for skin health and tissue regeneration",
+    categorySlug: "peptides-skin",
+    categoryIds: ["peptides-skin"],
+    description:
+      "GHK-CU is a copper peptide complex that has been extensively studied for its potential in skin regeneration and wound healing research. This tripeptide-copper complex is known for its role in collagen synthesis and tissue repair studies. For research purposes only.",
+    price: 30.63,
+    sizeOptions: [
+      { id: "cu50", name: "50mg", price: 30.63, inStock: true },
+      { id: "cu100", name: "100mg", price: 52.5, inStock: true },
+    ],
+    image: getProductImage("peptides-skin"),
+    quantity: "50mg/100mg",
+    chemicalName: "Glycyl-L-histidyl-L-lysine-copper(II)",
+    casNumber: "49557-75-7",
+    concentration: "50mg/100mg",
+    bestSeller: true,
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~24 hours",
+    molecularFormula: "C₁₄H₂₄CuN₆O₄",
+    molecularWeight: "403.93 g/mol",
+    relatedProducts: ["klow80-recovery-blend", "epithalon-anti-aging", "snap8-peptide"],
+  },
+  {
+    id: generateProductId("Melanotan 2 - Tanning Peptide"),
+    name: "Melanotan 2 - Tanning Peptide",
+    category: "Peptides for skin health and tissue regeneration",
+    categorySlug: "peptides-skin",
+    categoryIds: ["peptides-skin"],
+    description:
+      "Melanotan 2 (MT-2) is a synthetic analog of the peptide hormone α-melanocyte-stimulating hormone (α-MSH). This peptide has been studied for its potential effects on melanogenesis and pigmentation in research models. For research purposes only.",
+    price: 45.5,
+    sizeOptions: [{ id: "ml10", name: "10mg", price: 45.5, inStock: true }],
+    image: getProductImage("peptides-skin"),
+    quantity: "10mg",
+    chemicalName: "Melanotan II",
+    casNumber: "121062-08-6",
+    concentration: "10mg",
+    featured: true,
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~33 minutes",
+    molecularFormula: "C₅₀H₆₉N₁₅O₉",
+    molecularWeight: "1024.18 g/mol",
+    relatedProducts: ["ghk-cu-copper-peptide", "epithalon-anti-aging"],
+  },
+  {
+    id: generateProductId("Epithalon - Anti-Aging Peptide"),
+    name: "Epithalon - Anti-Aging Peptide",
+    category: "Peptides for skin health and tissue regeneration",
+    categorySlug: "peptides-skin",
+    categoryIds: ["peptides-skin", "metabolic-longevity"],
+    description:
+      "Epithalon (Epitalon) is a synthetic tetrapeptide that has been studied for its potential anti-aging properties and telomerase activation in research models. This peptide is derived from the pineal gland extract epithalamin. For research purposes only.",
+    price: 30.63,
+    sizeOptions: [
+      { id: "et5", name: "5mg", price: 30.63, inStock: true },
+      { id: "et10", name: "10mg", price: 39.38, inStock: true },
+      { id: "et50", name: "50mg", price: 126.88, inStock: true },
+    ],
+    image: getProductImage("peptides-skin"),
+    quantity: "5mg/10mg/50mg",
+    chemicalName: "Alanyl-glutamyl-aspartyl-glycine",
+    casNumber: "307297-39-8",
+    concentration: "5mg/10mg/50mg",
+    new: true,
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~6 hours",
+    molecularFormula: "C₁₄H₂₂N₄O₉",
+    molecularWeight: "390.35 g/mol",
+    relatedProducts: ["ghk-cu-copper-peptide", "melanotan-2-tanning"],
+  },
+  {
+    id: generateProductId("SNAP-8 - Anti-Wrinkle Peptide"),
+    name: "SNAP-8 - Anti-Wrinkle Peptide",
+    category: "Peptides for skin health and tissue regeneration",
+    categorySlug: "peptides-skin",
+    categoryIds: ["peptides-skin"],
+    description:
+      "SNAP-8 is an octapeptide that has been studied for its potential anti-wrinkle properties in cosmetic research. This peptide is designed to reduce the depth of wrinkles caused by facial muscle contractions. For research purposes only.",
+    price: 43.75,
+    sizeOptions: [{ id: "np810", name: "10mg", price: 43.75, inStock: true }],
+    image: getProductImage("peptides-skin"),
+    quantity: "10mg",
+    chemicalName: "Acetyl Octapeptide-3",
+    casNumber: "868844-74-0",
+    concentration: "10mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~4-6 hours",
+    molecularFormula: "C₄₁H₇₀N₁₆O₁₆S",
+    molecularWeight: "1075.16 g/mol",
+    relatedProducts: ["ghk-cu-copper-peptide", "epithalon-anti-aging"],
+  },
+  {
+    id: generateProductId("Hyaluronic Acid - Skin Hydration"),
+    name: "Hyaluronic Acid - Skin Hydration",
+    category: "Peptides for skin health and tissue regeneration",
+    categorySlug: "peptides-skin",
+    categoryIds: ["peptides-skin"],
+    description:
+      "Hyaluronic Acid is a naturally occurring glycosaminoglycan that has been extensively studied for its role in skin hydration and wound healing research. This high molecular weight compound is known for its exceptional water-binding capacity. For research purposes only.",
+    price: 175.0,
+    sizeOptions: [{ id: "ha5", name: "5mg", price: 175.0, inStock: true }],
+    image: getProductImage("peptides-skin"),
+    quantity: "5mg",
+    chemicalName: "Hyaluronic Acid",
+    casNumber: "9067-32-7",
+    concentration: "5mg",
+    bestSeller: true,
+    purity: "≥95% (HPLC)",
+    storage: "2-8°C, protected from light",
+    halfLife: "~12-24 hours",
+    molecularFormula: "(C₁₄H₂₁NO₁₁)ₙ",
+    molecularWeight: "Variable (high MW)",
+    relatedProducts: ["ghk-cu-copper-peptide", "snap8-peptide"],
+  },
+  // Sexual Health & Libido
+  {
+    id: generateProductId("PT-141 - Bremelanotide"),
+    name: "PT-141 - Bremelanotide",
+    category: "Peptides for sexual health and libido enhancement",
+    categorySlug: "sexual-health",
+    categoryIds: ["sexual-health"],
+    description:
+      "PT-141 (Bremelanotide) is a synthetic peptide studied for its potential effects on sexual arousal and libido. It is an analog of alpha-Melanocyte-stimulating hormone (α-MSH) and acts as a melanocortin receptor agonist. For research purposes only.",
+    price: 54.25,
+    sizeOptions: [{ id: "p41", name: "10mg", price: 54.25, inStock: true }],
+    image: getProductImage("sexual-health"),
+    quantity: "10mg",
+    chemicalName: "Bremelanotide",
+    casNumber: "189691-06-3",
+    concentration: "10mg",
+    featured: true,
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~2.7 hours",
+    molecularFormula: "C₅₀H₆₈N₁₄O₁₀",
+    molecularWeight: "1025.2 g/mol",
+    relatedProducts: ["gonadorelin-acetate", "hcg", "hmg"],
+  },
+  {
+    id: generateProductId("Gonadorelin Acetate - GnRH Analogue"),
+    name: "Gonadorelin Acetate - GnRH Analogue",
+    category: "Hormone regulating peptides and compounds",
+    categorySlug: "hormones-regulators",
+    categoryIds: ["hormones-regulators", "sexual-health"],
+    description:
+      "Gonadorelin Acetate is a synthetic form of Gonadotropin-Releasing Hormone (GnRH) used in research to study pituitary gland function and hormone regulation. It stimulates the release of luteinizing hormone (LH) and follicle-stimulating hormone (FSH). For research purposes only.",
+    price: 35.0,
+    sizeOptions: [{ id: "gnd2", name: "2mg", price: 35.0, inStock: true }],
+    image: getProductImage("hormones-regulators"),
+    quantity: "2mg",
+    chemicalName: "Gonadorelin Acetate",
+    casNumber: "34973-08-5",
+    concentration: "2mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~20-40 minutes",
+    molecularFormula: "C₅₅H₇₅N₁₇O₁₃",
+    molecularWeight: "1182.3 g/mol",
+    relatedProducts: ["pt-141-bremelanotide", "hcg", "hmg"],
+  },
+  {
+    id: generateProductId("HCG - Human Chorionic Gonadotropin"),
+    name: "HCG - Human Chorionic Gonadotropin",
+    category: "Hormone regulating peptides and compounds",
+    categorySlug: "hormones-regulators",
+    categoryIds: ["hormones-regulators", "sexual-health"],
+    description:
+      "Human Chorionic Gonadotropin (HCG) is a glycoprotein hormone studied for its role in mimicking Luteinizing Hormone (LH) to stimulate testosterone production and maintain gonadal function during research protocols. For research purposes only.",
+    price: 43.75,
+    sizeOptions: [
+      { id: "g2k", name: "2000IU", price: 43.75, inStock: true },
+      { id: "g5k", name: "5000IU", price: 70.0, inStock: true },
+      { id: "g10k", name: "10000IU", price: 118.13, inStock: true },
+    ],
+    image: getProductImage("hormones-regulators"),
+    quantity: "2000IU/5000IU/10000IU",
+    chemicalName: "Human Chorionic Gonadotropin",
+    casNumber: "9002-61-3",
+    concentration: "2000IU/5000IU/10000IU",
+    bestSeller: true,
+    purity: "≥99% (HPLC)",
+    storage: "2-8°C, protected from light",
+    halfLife: "~24-36 hours",
+    molecularFormula: "C₁₁₀₅H₁₇₇₆N₃₁₈O₃₂₇S₂₆",
+    molecularWeight: "~36,700 g/mol",
+    relatedProducts: ["pt-141-bremelanotide", "gonadorelin-acetate", "hmg"],
+  },
+  {
+    id: generateProductId("HMG - Human Menopausal Gonadotropin"),
+    name: "HMG - Human Menopausal Gonadotropin",
+    category: "Hormone regulating peptides and compounds",
+    categorySlug: "hormones-regulators",
+    categoryIds: ["hormones-regulators", "sexual-health"],
+    description:
+      "Human Menopausal Gonadotropin (HMG) is a hormonal compound containing both Follicle-Stimulating Hormone (FSH) and Luteinizing Hormone (LH). It is used in research to study spermatogenesis and follicular development. For research purposes only.",
+    price: 56.88,
+    sizeOptions: [{ id: "g75", name: "75IU", price: 56.88, inStock: true }],
+    image: getProductImage("hormones-regulators"),
+    quantity: "75IU",
+    chemicalName: "Human Menopausal Gonadotropin",
+    casNumber: "61489-71-2",
+    concentration: "75IU",
+    purity: "≥99% (HPLC)",
+    storage: "2-8°C, protected from light",
+    halfLife: "~12-24 hours",
+    molecularFormula: "Not applicable (protein mixture)",
+    molecularWeight: "~30,000 g/mol",
+    relatedProducts: ["pt-141-bremelanotide", "gonadorelin-acetate", "hcg"],
+  },
+  {
+    id: generateProductId("Alprostadil - Prostaglandin E1"),
+    name: "Alprostadil - Prostaglandin E1",
+    category: "Peptides for sexual health and libido enhancement",
+    categorySlug: "sexual-health",
+    categoryIds: ["sexual-health"],
+    description:
+      "Alprostadil (Prostaglandin E1) is a compound studied for its vasodilatory properties, particularly in research related to erectile function and blood flow. It acts by relaxing smooth muscle tissue and dilating blood vessels. For research purposes only.",
+    price: 113.75,
+    sizeOptions: [{ id: "pro20", name: "20mcg", price: 113.75, inStock: true }],
+    image: getProductImage("sexual-health"),
+    quantity: "20mcg",
+    chemicalName: "Alprostadil",
+    casNumber: "745-65-3",
+    concentration: "20mcg",
+    purity: "≥99% (HPLC)",
+    storage: "2-8°C, protected from light",
+    halfLife: "~5-10 minutes",
+    molecularFormula: "C₂₀H₃₄O₅",
+    molecularWeight: "354.5 g/mol",
+    relatedProducts: ["pt-141-bremelanotide", "tadalafil", "sildenafil"],
+  },
+  // Cognitive & Neurological
+  {
+    id: generateProductId("Selank - Anxiolytic Nootropic Peptide"),
+    name: "Selank - Anxiolytic Nootropic Peptide",
+    category: "Peptides for cognitive enhancement and neurological support",
+    categorySlug: "cognitive-neurological",
+    categoryIds: ["cognitive-neurological"],
+    description:
+      "Selank is a synthetic peptide based on the human tuftsin protein, studied for its potential anxiolytic and nootropic effects. Research suggests it may modulate the immune system and influence neurotransmitter levels. For research purposes only.",
+    price: 45.5,
+    sizeOptions: [
+      { id: "sk5", name: "5mg", price: 45.5, inStock: true },
+      { id: "sk10", name: "10mg", price: 63.0, inStock: true },
+    ],
+    image: getProductImage("growth-hormone"),
+    quantity: "5mg/10mg",
+    chemicalName: "Thr-Lys-Pro-Arg-Pro-Gly-Pro",
+    casNumber: "129954-34-3",
+    concentration: "5mg/10mg",
+    new: true,
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~1.5-2 minutes",
+    molecularFormula: "C₃₃H₅₇N₁₁O₉",
+    molecularWeight: "751.9 g/mol",
+    relatedProducts: ["semax-nootropic", "cerebrolysin-neurotrophic"],
+  },
+  {
+    id: generateProductId("Semax - Nootropic Peptide"),
+    name: "Semax - Nootropic Peptide",
+    category: "Peptides for cognitive enhancement and neurological support",
+    categorySlug: "cognitive-neurological",
+    categoryIds: ["cognitive-neurological"],
+    description:
+      "Semax is a synthetic peptide fragment of ACTH studied for its potent nootropic and neuroprotective properties. Research indicates it may enhance memory, focus, and cognitive function. For research purposes only.",
+    price: 45.5,
+    sizeOptions: [
+      { id: "xa5", name: "5mg", price: 45.5, inStock: true },
+      { id: "xa10", name: "10mg", price: 63.0, inStock: true },
+    ],
+    image: getProductImage("growth-hormone"),
+    quantity: "5mg/10mg",
+    chemicalName: "Met-Glu-His-Phe-Pro-Gly-Pro",
+    casNumber: "80714-61-0",
+    concentration: "5mg/10mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~1-2 minutes",
+    molecularFormula: "C₃₇H₅₁N₉O₁₀S",
+    molecularWeight: "813.9 g/mol",
+    relatedProducts: ["selank-anxiolytic", "cerebrolysin-neurotrophic"],
+  },
+  {
+    id: generateProductId("Cerebrolysin - Neurotrophic Peptide Mixture"),
+    name: "Cerebrolysin - Neurotrophic Peptide Mixture",
+    category: "Peptides for cognitive enhancement and neurological support",
+    categorySlug: "cognitive-neurological",
+    categoryIds: ["cognitive-neurological"],
+    description:
+      "Cerebrolysin is a mixture of low-molecular-weight peptides and free amino acids derived from porcine brain tissue. It is studied for its neurotrophic and neuroprotective effects in various neurological research models. For research purposes only.",
+    price: 72.93,
+    sizeOptions: [{ id: "cbl60", name: "60mg", price: 72.93, inStock: true }],
+    image: getProductImage("growth-hormone"),
+    quantity: "60mg",
+    chemicalName: "Porcine Brain-Derived Peptides",
+    casNumber: "12656-61-0",
+    concentration: "60mg",
+    bestSeller: true,
+    purity: "Pharmaceutical Grade",
+    storage: "Store at room temperature, protected from light",
+    halfLife: "Variable",
+    molecularFormula: "Not applicable (peptide mixture)",
+    molecularWeight: "<10,000 g/mol",
+    relatedProducts: ["selank-anxiolytic", "semax-nootropic"],
+  },
+  {
+    id: generateProductId("dsip"),
+    name: "DSIP - Delta Sleep-Inducing Peptide",
+    category: "Peptides for sleep enhancement and recovery",
+    categorySlug: "sleep-recovery",
+    categoryIds: ["sleep-recovery"],
+    description:
+      "DSIP (Delta Sleep-Inducing Peptide) is a neuropeptide studied for its role in sleep regulation, particularly in promoting slow-wave sleep. For research purposes only.",
+    price: 30.63,
+    sizeOptions: [
+      { id: "ds2", name: "2mg", price: 30.63, inStock: true },
+      { id: "ds5", name: "5mg", price: 39.38, inStock: true },
+      { id: "ds10", name: "10mg", price: 67.38, inStock: true },
+    ],
+    image: getProductImage("sleep-recovery"),
+    quantity: "2mg/5mg/10mg",
+    chemicalName: "Trp-Ala-Gly-Gly-Asp-Ala-Ser-Gly-Glu",
+    casNumber: "62568-57-4",
+    concentration: "2mg/5mg/10mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~3-5 minutes",
+    molecularFormula: "C₃₅H₄₈N₁₀O₁₅",
+    molecularWeight: "848.8 g/mol",
+    relatedProducts: ["melatonin-sleep-aid", "epithalon-longevity"],
+  },
+  {
+    id: generateProductId("Melatonin - Sleep Aid"),
+    name: "Melatonin - Sleep Aid",
+    category: "Peptides for sleep enhancement and recovery",
+    categorySlug: "sleep-recovery",
+    categoryIds: ["sleep-recovery"],
+    description:
+      "Melatonin is a hormone that regulates the sleep-wake cycle. It is researched for its effects on improving sleep quality and managing circadian rhythm disorders. For research purposes only.",
+    price: 56.88,
+    sizeOptions: [{ id: "mt10", name: "10mg", price: 56.88, inStock: true }],
+    image: getProductImage("sleep-recovery"),
+    quantity: "10mg",
+    chemicalName: "N-[2-(5-methoxy-1H-indol-3-yl)ethyl]acetamide",
+    casNumber: "73-31-4",
+    concentration: "10mg",
+    purity: "≥99%",
+    storage: "Room temperature, protected from light",
+    halfLife: "~20-50 minutes",
+    molecularFormula: "C₁₃H₁₆N₂O₂",
+    molecularWeight: "232.28 g/mol",
+    relatedProducts: ["dsip-delta-sleep-inducing-peptide", "ghrp-2-acetate"],
+  },
+  {
+    id: generateProductId("Oxytocin Acetate"),
+    name: "Oxytocin Acetate – Research-Grade Neuropeptide",
+    category: "Hormone regulating peptides and compounds",
+    categorySlug: "hormones-regulators",
+    categoryIds: ["hormones-regulators", "sexual-health"],
+    description:
+      "Oxytocin is a neuropeptide involved in social bonding, reproduction, and childbirth. It is studied for its effects on behavior and physiological processes. For research purposes only.",
+    price: 30.63,
+    sizeOptions: [
+      { id: "ot2", name: "2mg", price: 30.63, inStock: true },
+      { id: "ot5", name: "5mg", price: 45.5, inStock: true },
+    ],
+    image: getProductImage("hormones-regulators"),
+    quantity: "2mg/5mg",
+    chemicalName: "Cys-Tyr-Ile-Gln-Asn-Cys-Pro-Leu-Gly-NH2",
+    casNumber: "50-56-6",
+    concentration: "2mg/5mg",
+    purity: "≥98% (HPLC)",
+    storage: "2-8°C, protected from light",
+    halfLife: "~3-5 minutes",
+    molecularFormula: "C₄₃H₆₆N₁₂O₁₂S₂",
+    molecularWeight: "1007.2 g/mol",
+    relatedProducts: ["kisspeptin-10", "pt-141-bremelanotide"],
+  },
+  {
+    id: generateProductId("Kisspeptin-10"),
+    name: "Kisspeptin-10 – Research-Grade Reproductive Peptide",
+    category: "Hormone regulating peptides and compounds",
+    categorySlug: "hormones-regulators",
+    categoryIds: ["hormones-regulators", "sexual-health"],
+    description:
+      "Kisspeptin-10 is a peptide that plays a crucial role in the regulation of the reproductive axis by stimulating GnRH release. It is researched for its effects on hormone levels and fertility. For research purposes only.",
+    price: 56.88,
+    sizeOptions: [
+      { id: "ks5", name: "5mg", price: 56.88, inStock: true },
+      { id: "ks10", name: "10mg", price: 83.13, inStock: true },
+    ],
+    image: getProductImage("hormones-regulators"),
+    quantity: "5mg/10mg",
+    chemicalName: "Tyr-Asn-Trp-Asn-Ser-Phe-Gly-Leu-Arg-Phe-NH2",
+    casNumber: "374675-21-5",
+    concentration: "5mg/10mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~28 minutes",
+    molecularFormula: "C₆₃H₈₃N₁₇O₁₄",
+    molecularWeight: "1302.4 g/mol",
+    relatedProducts: ["oxytocin-acetate", "gonadorelin-acetate"],
+  },
+  {
+    id: generateProductId("Thymulin"),
+    name: "Thymulin – Research-Grade Immunomodulator",
+    category: "Hormone regulating peptides and compounds",
+    categorySlug: "hormones-regulators",
+    categoryIds: ["hormones-regulators", "recovery-healing"],
+    description:
+      "Thymulin is a nonapeptide produced by the thymus gland, involved in immune function and anti-inflammatory processes. It is studied for its immunomodulatory effects. For research purposes only.",
+    price: 43.75,
+    sizeOptions: [
+      { id: "ty5", name: "5mg", price: 43.75, inStock: true },
+      { id: "ty10", name: "10mg", price: 61.25, inStock: true },
+    ],
+    image: getProductImage("hormones-regulators"),
+    quantity: "5mg/10mg",
+    chemicalName: "Glp-Ala-Lys-Ser-Gln-Gly-Gly-Ser-Asn-OH",
+    casNumber: "63958-90-7",
+    concentration: "5mg/10mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "Variable",
+    molecularFormula: "C₃₃H₅₄N₁₂O₁₅",
+    molecularWeight: "858.85 g/mol",
+    relatedProducts: ["thymosin-alpha-1", "tb-500-thymosin-beta-4"],
+  },
+  {
+    id: generateProductId("Thymosin Alpha-1"),
+    name: "Thymosin Alpha-1 – Research-Grade Immune Modulator",
+    category: "Hormone regulating peptides and compounds",
+    categorySlug: "hormones-regulators",
+    categoryIds: ["hormones-regulators", "recovery-healing"],
+    description:
+      "Thymosin Alpha-1 is a peptide fragment of prothymosin alpha, known for its role in restoring and modulating immune function. It is researched for its potential in treating immune deficiencies and as an adjunct in various therapies. For research purposes only.",
+    price: 39.38,
+    sizeOptions: [
+      { id: "ta2", name: "2mg", price: 39.38, inStock: true },
+      { id: "ta5", name: "5mg", price: 74.38, inStock: true },
+      { id: "ta10", name: "10mg", price: 131.25, inStock: true },
+    ],
+    image: getProductImage("hormones-regulators"),
+    quantity: "2mg/5mg/10mg",
+    chemicalName: "Ac-Ser-Asp-Ala-Ala-Val-Asp-Thr-Ser-Ser-Glu-Ile-Thr-Thr-Lys-Asp-Leu-Lys-Glu-Lys-Lys-Glu-Val-Val-Glu-Glu-Ala-Glu-Asn-OH",
+    casNumber: "62304-98-7",
+    concentration: "2mg/5mg/10mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~2 hours",
+    molecularFormula: "C₁₂₉H₂₁₅N₃₃O₅₅",
+    molecularWeight: "3108.3 g/mol",
+    relatedProducts: ["thymulin", "bpc-157"],
+  },
+  {
+    id: generateProductId("AOD-9604"),
+    name: "AOD-9604 – Research-Grade HGH Fragment",
+    category: "Peptides for metabolic health and longevity",
+    categorySlug: "metabolic-longevity",
+    categoryIds: ["metabolic-longevity", "weight-management"],
+    description:
+      "AOD-9604 is a modified fragment of human growth hormone (HGH) that is studied for its lipolytic (fat-burning) properties without affecting insulin sensitivity or proliferation. For research purposes only.",
+    price: 49.88,
+    sizeOptions: [
+      { id: "2ad", name: "2mg", price: 49.88, inStock: true },
+      { id: "5ad", name: "5mg", price: 78.75, inStock: true },
+      { id: "10ad", name: "10mg", price: 137.38, inStock: true },
+    ],
+    image: getProductImage("metabolic-longevity"),
+    quantity: "2mg/5mg/10mg",
+    chemicalName: "Tyr-Leu-Arg-Ile-Val-Gln-Cys-Arg-Ser-Val-Glu-Gly-Ser-Cys-Gly-Phe",
+    casNumber: "221231-10-3",
+    concentration: "2mg/5mg/10mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~15-20 minutes",
+    molecularFormula: "C₇₈H₁₂₅N₂₃O₂₃S₂",
+    molecularWeight: "1817.1 g/mol",
+    relatedProducts: ["hgh-fragment-176-191", "tirzepatide"],
+  },
+  {
+    id: generateProductId("MOTS-c"),
+    name: "MOTS-c – Research-Grade Mitochondrial Peptide",
+    category: "Peptides for metabolic health and longevity",
+    categorySlug: "metabolic-longevity",
+    categoryIds: ["metabolic-longevity", "weight-management"],
+    description:
+      "MOTS-c is a mitochondrial-derived peptide known for its role in metabolic regulation, including enhancing glucose metabolism and insulin sensitivity. It is studied for its potential in aging and metabolic diseases. For research purposes only.",
+    price: 43.75,
+    sizeOptions: [
+      { id: "ms5", name: "5mg", price: 43.75, inStock: true },
+      { id: "ms10", name: "10mg", price: 65.63, inStock: true },
+      { id: "ms40", name: "40mg", price: 192.5, inStock: true },
+    ],
+    image: getProductImage("metabolic-longevity"),
+    quantity: "5mg/10mg/40mg",
+    chemicalName: "Met-Arg-Trp-Gln-Glu-Met-Gly-Tyr-Ile-Phe-Tyr-Pro-Arg-Lys-Leu-Arg",
+    casNumber: "1627580-64-6",
+    concentration: "5mg/10mg/40mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "Variable",
+    molecularFormula: "C₁₀₁H₁₅₂N₂₈O₂₂S₂",
+    molecularWeight: "2174.6 g/mol",
+    relatedProducts: ["5-amino-1mq", "aod-9604"],
+  },
+  {
+    id: generateProductId("5-amino-1mq"),
+    name: "5-amino-1mq – Research-Grade NNMT Inhibitor",
+    category: "Peptides for metabolic health and longevity",
+    categorySlug: "metabolic-longevity",
+    categoryIds: ["metabolic-longevity", "weight-management"],
+    description:
+      "5-amino-1mq is a small molecule inhibitor of the enzyme NNMT, which is involved in cellular energy metabolism. It is researched for its potential to reverse diet-induced obesity and related metabolic conditions. For research purposes only.",
+    price: 63.0,
+    sizeOptions: [{ id: "5am", name: "5mg", price: 63.0, inStock: true }],
+    image: getProductImage("metabolic-longevity"),
+    quantity: "5mg",
+    chemicalName: "5-Amino-1-methylquinolinium",
+    casNumber: "42464-96-0",
+    concentration: "5mg",
+    purity: "≥99%",
+    storage: "Room temperature, protected from light",
+    halfLife: "Variable",
+    molecularFormula: "C₁₀H₁₁N₂⁺",
+    molecularWeight: "159.21 g/mol",
+    relatedProducts: ["mots-c", "slu-pp-332"],
+  },
+  {
+    id: generateProductId("SLU-PP-332"),
+    name: "SLU-PP-332 – Research-Grade ERRα Agonist",
+    category: "Peptides for metabolic health and longevity",
+    categorySlug: "metabolic-longevity",
+    categoryIds: ["metabolic-longevity", "peptides-muscle"],
+    description:
+      "SLU-PP-332 is an ERRα agonist that is studied for its ability to mimic the effects of exercise by stimulating metabolic pathways related to muscle fiber type switching and endurance. For research purposes only.",
+    price: 87.5,
+    sizeOptions: [{ id: "slu5", name: "5mg", price: 87.5, inStock: true }],
+    image: getProductImage("metabolic-longevity"),
+    quantity: "5mg",
+    chemicalName: "(S)-N-(3-(3-fluoro-4-(trifluoromethyl)phenyl)-1H-pyrazol-1-yl)acetamide",
+    casNumber: "1429944-77-5",
+    concentration: "5mg",
+    purity: "≥98%",
+    storage: "-20°C, protected from light",
+    halfLife: "Variable",
+    molecularFormula: "C₁₂H₉F₄N₃O",
+    molecularWeight: "299.22 g/mol",
+    relatedProducts: ["5-amino-1mq", "gw-501516"],
+  },
+  {
+    id: generateProductId("ARA-290"),
+    name: "ARA 290 – Research-Grade Innate Repair Peptide",
+    category: "Specialized research compounds and peptides",
+    categorySlug: "specialized-compounds",
+    categoryIds: ["specialized-compounds", "recovery-healing"],
+    description:
+      "ARA 290 is a peptide designed to activate the innate repair receptor, which is studied for its potential neuroprotective and anti-inflammatory effects without hematopoietic side effects. For research purposes only.",
+    price: 58.63,
+    sizeOptions: [{ id: "ra10", name: "10mg", price: 58.63, inStock: true }],
+    image: getProductImage("specialized-compounds"),
+    quantity: "10mg",
+    chemicalName: "Pyroglutamyl-glutamyl-asparaginyl-leucyl-seryl-alanyl-leucyl-alanyl-arginyl-alanyl-arginine",
+    casNumber: "1208243-50-8",
+    concentration: "10mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~2-3 minutes",
+    molecularFormula: "C₅₁H₉₀N₁₈O₁₇",
+    molecularWeight: "1243.4 g/mol",
+    relatedProducts: ["bpc-157", "tb-500-thymosin-beta-4"],
+  },
+  {
+    id: generateProductId("RA260"),
+    name: "RA260 – Research-Grade Specialized Compound",
+    category: "Specialized research compounds and peptides",
+    categorySlug: "specialized-compounds",
+    categoryIds: ["specialized-compounds"],
+    description:
+      "RA260 is a specialized research compound. Its specific mechanism and research applications are under investigation. For research purposes only.",
+    price: 56.88,
+    sizeOptions: [{ id: "ar50", name: "50mg", price: 56.88, inStock: true }],
+    image: getProductImage("specialized-compounds"),
+    quantity: "50mg",
+    chemicalName: "Unknown",
+    casNumber: "Unknown",
+    concentration: "50mg",
+    purity: "≥98%",
+    storage: "-20°C, protected from light",
+    halfLife: "Unknown",
+    molecularFormula: "Unknown",
+    molecularWeight: "Unknown",
+    relatedProducts: ["ara-290", "adipotide"],
+  },
+  {
+    id: generateProductId("Adipotide"),
+    name: "Adipotide – Research-Grade Adipose Tissue Apoptosis Inducer",
+    category: "Specialized research compounds and peptides",
+    categorySlug: "specialized-compounds",
+    categoryIds: ["specialized-compounds", "weight-management"],
+    description:
+      "Adipotide is a peptidomimetic studied for its ability to induce apoptosis in the blood vessels of white adipose tissue, leading to fat reduction in research models. For research purposes only.",
+    price: 74.38,
+    sizeOptions: [
+      { id: "ap2", name: "2mg", price: 74.38, inStock: true },
+      { id: "ap5", name: "5mg", price: 126.88, inStock: true },
+    ],
+    image: getProductImage("specialized-compounds"),
+    quantity: "2mg/5mg",
+    chemicalName: "CKGGRAKDC-GG-D(KLAKLAK)2",
+    casNumber: "104180-23-6",
+    concentration: "2mg/5mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "Variable",
+    molecularFormula: "C₁₁₁H₂₀₄N₃₆O₂₈S₂",
+    molecularWeight: "2555.2 g/mol",
+    relatedProducts: ["tirzepatide", "aod-9604"],
+  },
+  {
+    id: generateProductId("SS-31"),
+    name: "SS-31 – Research-Grade Mitochondria-Targeting Peptide",
+    category: "Specialized research compounds and peptides",
+    categorySlug: "specialized-compounds",
+    categoryIds: ["specialized-compounds", "metabolic-longevity"],
+    description:
+      "SS-31 is a mitochondria-targeting peptide that is studied for its role in protecting against oxidative stress and improving mitochondrial function, with potential applications in age-related diseases. For research purposes only.",
+    price: 78.75,
+    sizeOptions: [
+      { id: "2s10", name: "10mg", price: 78.75, inStock: true },
+      { id: "2s50", name: "50mg", price: 319.38, inStock: true },
+    ],
+    image: getProductImage("specialized-compounds"),
+    quantity: "10mg/50mg",
+    chemicalName: "D-Arg-Dmt-Lys-Phe-NH2",
+    casNumber: "736992-21-5",
+    concentration: "10mg/50mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~65 minutes",
+    molecularFormula: "C₃₂H₄₉N₇O₅",
+    molecularWeight: "623.8 g/mol",
+    relatedProducts: ["mots-c", "foxo4"],
+  },
+  {
+    id: generateProductId("FOXO4"),
+    name: "FOXO4-DRI – Research-Grade Senolytic Peptide",
+    category: "Specialized research compounds and peptides",
+    categorySlug: "specialized-compounds",
+    categoryIds: ["specialized-compounds", "metabolic-longevity"],
+    description:
+      "FOXO4-DRI is a peptide that disrupts the interaction between FOXO4 and p53, inducing apoptosis in senescent cells. It is studied for its potential in reversing age-related tissue decline. For research purposes only.",
+    price: 266.88,
+    sizeOptions: [{ id: "f410", name: "10mg", price: 266.88, inStock: true }],
+    image: getProductImage("specialized-compounds"),
+    quantity: "10mg",
+    chemicalName: "L-Leucyl-L-threonyl-L-arginyl-L-leucyl-L-arginyl-L-arginyl-L-glutaminyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-isoleucyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-arginyl-L-...",
+    casNumber: "1262529-01-3",
+    concentration: "10mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "Variable",
+    molecularFormula: "C₁₂₁H₂₀₀N₄₂O₃₉",
+    molecularWeight: "2695.1 g/mol",
+    relatedProducts: ["ss-31", "epithalon-longevity"],
+  },
+  {
+    id: generateProductId("LL-37"),
+    name: "LL-37 – Research-Grade Antimicrobial Peptide",
+    category: "Specialized research compounds and peptides",
+    categorySlug: "specialized-compounds",
+    categoryIds: ["specialized-compounds", "recovery-healing"],
+    description:
+      "LL-37 is a cathelicidin antimicrobial peptide with broad-spectrum antimicrobial activity. It is also studied for its role in inflammation, wound healing, and immune response modulation. For research purposes only.",
+    price: 78.75,
+    sizeOptions: [
+      { id: "ll5", name: "5mg", price: 78.75, inStock: true },
+      { id: "ll10", name: "10mg", price: 148.75, inStock: true },
+    ],
+    image: getProductImage("specialized-compounds"),
+    quantity: "5mg/10mg",
+    chemicalName: "Leu-Leu-Gly-Asp-Phe-Phe-Arg-Lys-Ser-Lys-Glu-Lys-Ile-Gly-Lys-Glu-Phe-Lys-Arg-Ile-Val-Gln-Arg-Ile-Lys-Asp-Phe-Leu-Arg-Asn-Leu-Val-Pro-Arg-Thr-Glu-Ser",
+    casNumber: "154947-66-7",
+    concentration: "5mg/10mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "Variable",
+    molecularFormula: "C₂₀₅H₃₄₀N₆₀O₅₃",
+    molecularWeight: "4493.3 g/mol",
+    relatedProducts: ["bpc-157", "kpv"],
+  },
+  {
+    id: generateProductId("PEG-MGF"),
+    name: "PEG MGF – Research-Grade Mechano Growth Factor",
+    category: "Specialized research compounds and peptides",
+    categorySlug: "specialized-compounds",
+    categoryIds: ["specialized-compounds", "peptides-muscle"],
+    description:
+      "Pegylated Mechano Growth Factor (PEG-MGF) is a variant of IGF-1 that is studied for its role in muscle repair and growth by stimulating myoblasts. Pegylation extends its half-life. For research purposes only.",
+    price: 87.5,
+    sizeOptions: [{ id: "fmp2", name: "2mg", price: 87.5, inStock: true }],
+    image: getProductImage("specialized-compounds"),
+    quantity: "2mg",
+    chemicalName: "Pegylated Mechano Growth Factor",
+    casNumber: "N/A",
+    concentration: "2mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "Extended due to pegylation",
+    molecularFormula: "C₁₂₁H₂₀₀N₄₂O₃₉ (peptide part)",
+    molecularWeight: "~5000-6000 g/mol (with PEG)",
+    relatedProducts: ["igf-1-lr3", "cjc-1295-dac"],
+  },
+  {
+    id: generateProductId("Dermorphin"),
+    name: "Dermorphin – Research-Grade Opioid Peptide",
+    category: "Specialized research compounds and peptides",
+    categorySlug: "specialized-compounds",
+    categoryIds: ["specialized-compounds"],
+    description:
+      "Dermorphin is a hepta-peptide that is a potent and selective mu-opioid receptor agonist. It is studied for its analgesic properties. For research purposes only.",
+    price: 39.38,
+    sizeOptions: [{ id: "dr5", name: "5mg", price: 39.38, inStock: true }],
+    image: getProductImage("specialized-compounds"),
+    quantity: "5mg",
+    chemicalName: "Tyr-D-Ala-Phe-Gly-Tyr-Pro-Ser-NH2",
+    casNumber: "77614-16-5",
+    concentration: "5mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~1-2 hours",
+    molecularFormula: "C₄₀H₅₀N₈O₁₀",
+    molecularWeight: "802.9 g/mol",
+    relatedProducts: ["selank-anxiolytic", "semax-nootropic"],
+  },
+  {
+    id: generateProductId("VIP"),
+    name: "VIP – Research-Grade Vasoactive Intestinal Peptide",
+    category: "Specialized research compounds and peptides",
+    categorySlug: "specialized-compounds",
+    categoryIds: ["specialized-compounds", "recovery-healing"],
+    description:
+      "Vasoactive Intestinal Peptide (VIP) is a neuropeptide that functions as a vasodilator and is involved in various physiological processes, including smooth muscle relaxation, and regulation of water and ion secretion. For research purposes only.",
+    price: 140.0,
+    sizeOptions: [{ id: "vp10", name: "10mg", price: 140.0, inStock: true }],
+    image: getProductImage("specialized-compounds"),
+    quantity: "10mg",
+    chemicalName: "His-Ser-Asp-Ala-Val-Phe-Thr-Asp-Asn-Tyr-Thr-Arg-Leu-Arg-Lys-Gln-Met-Ala-Val-Lys-Lys-Tyr-Leu-Asn-Ser-Ile-Leu-Asn-NH2",
+    casNumber: "40077-57-4",
+    concentration: "10mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~1-2 minutes",
+    molecularFormula: "C₁₄₇H₂₃₈N₄₄O₄₂S",
+    molecularWeight: "3325.8 g/mol",
+    relatedProducts: ["ll-37", "kpv"],
+  },
+  {
+    id: generateProductId("KPV"),
+    name: "KPV – Research-Grade Anti-inflammatory Peptide",
+    category: "Specialized research compounds and peptides",
+    categorySlug: "specialized-compounds",
+    categoryIds: ["specialized-compounds", "recovery-healing", "peptides-skin"],
+    description:
+      "KPV is a tripeptide fragment of α-MSH with potent anti-inflammatory properties. It is studied for its potential in treating inflammatory conditions, particularly those affecting the skin and gut. For research purposes only.",
+    price: 56.88,
+    sizeOptions: [{ id: "kp10", name: "10mg", price: 56.88, inStock: true }],
+    image: getProductImage("specialized-compounds"),
+    quantity: "10mg",
+    chemicalName: "Lys-Pro-Val",
+    casNumber: "68341-35-5",
+    concentration: "10mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "Variable",
+    molecularFormula: "C₁₆H₃₀N₄O₄",
+    molecularWeight: "342.4 g/mol",
+    relatedProducts: ["bpc-157", "ll-37"],
+  },
+  {
+    id: generateProductId("GHRP-2 Acetate"),
+    name: "GHRP-2 Acetate – Research-Grade Growth Hormone Secretagogue",
+    category: "Growth hormone secretagogues",
+    categorySlug: "growth-hormone",
+    categoryIds: ["growth-hormone"],
+    description:
+      "GHRP-2 is a potent growth hormone secretagogue that stimulates the pituitary gland to release growth hormone. It is studied for its effects on muscle growth, fat loss, and recovery. For research purposes only.",
+    price: 30.63,
+    sizeOptions: [
+      { id: "g25", name: "5mg", price: 30.63, inStock: true },
+      { id: "g210", name: "10mg", price: 48.13, inStock: true },
+    ],
+    image: getProductImage("growth-hormone"),
+    quantity: "5mg/10mg",
+    chemicalName: "D-Ala-D-2-Nal-Ala-Trp-D-Phe-Lys-NH2",
+    casNumber: "158861-67-7",
+    concentration: "5mg/10mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~30 minutes",
+    molecularFormula: "C₄₅H₅₅N₉O₆",
+    molecularWeight: "818.0 g/mol",
+    relatedProducts: ["ghrp-6-acetate", "cjc-1295-no-dac"],
+  },
+  {
+    id: generateProductId("GHRP-6 Acetate"),
+    name: "GHRP-6 Acetate – Research-Grade Growth Hormone Secretagogue",
+    category: "Growth hormone secretagogues",
+    categorySlug: "growth-hormone",
+    categoryIds: ["growth-hormone"],
+    description:
+      "GHRP-6 is a growth hormone releasing peptide that strongly stimulates appetite and GH release. It is researched for its effects on muscle mass, body fat reduction, and improved sleep. For research purposes only.",
+    price: 30.63,
+    sizeOptions: [
+      { id: "g65", name: "5mg", price: 30.63, inStock: true },
+      { id: "g610", name: "10mg", price: 48.13, inStock: true },
+    ],
+    image: getProductImage("growth-hormone"),
+    quantity: "5mg/10mg",
+    chemicalName: "His-D-Trp-Ala-Trp-D-Phe-Lys-NH2",
+    casNumber: "87616-84-0",
+    concentration: "5mg/10mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~30 minutes",
+    molecularFormula: "C₄₆H₅₆N₁₂O₆",
+    molecularWeight: "873.0 g/mol",
+    relatedProducts: ["ghrp-2-acetate", "sermorelin-acetate"],
+  },
+  {
+    id: generateProductId("Sermorelin Acetate"),
+    name: "Sermorelin Acetate – Research-Grade GHRH Analogue",
+    category: "Growth hormone secretagogues",
+    categorySlug: "growth-hormone",
+    categoryIds: ["growth-hormone"],
+    description:
+      "Sermorelin Acetate is a GHRH analogue containing the first 29 amino acids of human GHRH. It is studied for its ability to stimulate the pituitary gland to produce and release growth hormone. For research purposes only.",
+    price: 19.25,
+    sizeOptions: [
+      { id: "smo2", name: "2mg", price: 19.25, inStock: true },
+      { id: "smo5", name: "5mg", price: 61.25, inStock: true },
+      { id: "smo10", name: "10mg", price: 109.38, inStock: true },
+    ],
+    image: getProductImage("growth-hormone"),
+    quantity: "2mg/5mg/10mg",
+    chemicalName: "Tyr-Ala-Asp-Ala-Ile-Phe-Thr-Asn-Ser-Tyr-Arg-Lys-Val-Leu-Gly-Gln-Leu-Ser-Ala-Arg-Lys-Leu-Leu-Gln-Asp-Ile-Met-Ser-Arg-NH2",
+    casNumber: "86168-78-7",
+    concentration: "2mg/5mg/10mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~10-20 minutes",
+    molecularFormula: "C₁₄₉H₂₄₆N₄₄O₄₂S",
+    molecularWeight: "3357.9 g/mol",
+    relatedProducts: ["tesamorelin", "ipamorelin"],
+  },
+  {
+    id: generateProductId("Tesamorelin"),
+    name: "Tesamorelin – Research-Grade GHRH Analogue",
+    category: "Growth hormone secretagogues",
+    categorySlug: "growth-hormone",
+    categoryIds: ["growth-hormone", "weight-management"],
+    description:
+      "Tesamorelin is a synthetic form of growth-hormone-releasing hormone (GHRH) used in the research of lipodystrophy. It stimulates the pituitary gland to secrete growth hormone. For research purposes only.",
+    price: 52.5,
+    sizeOptions: [
+      { id: "tsm2", name: "2mg", price: 52.5, inStock: true },
+      { id: "tsm5", name: "5mg", price: 91.88, inStock: true },
+      { id: "tsm10", name: "10mg", price: 166.25, inStock: true },
+      { id: "tsm20", name: "20mg", price: 301.88, inStock: true },
+    ],
+    image: getProductImage("growth-hormone"),
+    quantity: "2mg/5mg/10mg/20mg",
+    chemicalName: "trans-3-hexenoyl-Tyr-Ala-Asp-Ala-Ile-Phe-Thr-Asn-Ser-Tyr-Arg-Lys-Val-Leu-Gly-Gln-Leu-Ser-Ala-Arg-Lys-Leu-Leu-Gln-Asp-Ile-Met-Ser-Arg-Gln-Gln-Gly-Glu-Ser-Asn-Gln-Glu-Arg-Gly-Ala-Arg-Ala-Arg-Leu-NH2",
+    casNumber: "218949-48-5",
+    concentration: "2mg/5mg/10mg/20mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~25-35 minutes",
+    molecularFormula: "C₂₂₁H₃₆₆N₇₂O₆₇S",
+    molecularWeight: "5135.8 g/mol",
+    relatedProducts: ["sermorelin-acetate", "cjc-1295-dac"],
+  },
+  {
+    id: generateProductId("Hexarelin Acetate"),
+    name: "Hexarelin Acetate – Research-Grade Growth Hormone Secretagogue",
+    category: "Growth hormone secretagogues",
+    categorySlug: "growth-hormone",
+    categoryIds: ["growth-hormone"],
+    description:
+      "Hexarelin is a potent, synthetic hexapeptide that stimulates the release of growth hormone (GH). It is studied for its cardioprotective and muscle-building effects. For research purposes only.",
+    price: 35.0,
+    sizeOptions: [
+      { id: "hx2", name: "2mg", price: 35.0, inStock: true },
+      { id: "hx5", name: "5mg", price: 74.38, inStock: true },
+    ],
+    image: getProductImage("growth-hormone"),
+    quantity: "2mg/5mg",
+    chemicalName: "His-D-2-Me-Trp-Ala-Trp-D-Phe-Lys-NH2",
+    casNumber: "140703-51-1",
+    concentration: "2mg/5mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~55 minutes",
+    molecularFormula: "C₄₇H₅₈N₁₂O₆",
+    molecularWeight: "887.0 g/mol",
+    relatedProducts: ["ghrp-6-acetate", "ipamorelin"],
+  },
+  {
+    id: generateProductId("HGH Fragment 176-191"),
+    name: "HGH Fragment 176-191 – Research-Grade HGH Fragment",
+    category: "Growth hormone secretagogues",
+    categorySlug: "growth-hormone",
+    categoryIds: ["growth-hormone", "weight-management"],
+    description:
+      "HGH Fragment 176-191 is a modified form of the C-terminal region of human growth hormone, studied for its potent fat-burning properties without the side effects associated with full HGH. For research purposes only.",
+    price: 43.75,
+    sizeOptions: [
+      { id: "fr2", name: "2mg", price: 43.75, inStock: true },
+      { id: "fr5", name: "5mg", price: 78.75, inStock: true },
+      { id: "fr10", name: "10mg", price: 157.5, inStock: true },
+    ],
+    image: getProductImage("growth-hormone"),
+    quantity: "2mg/5mg/10mg",
+    chemicalName: "Tyr-Leu-Arg-Ile-Val-Gln-Cys-Arg-Ser-Val-Glu-Gly-Ser-Cys-Gly-Phe",
+    casNumber: "66004-57-7",
+    concentration: "2mg/5mg/10mg",
+    purity: "≥98% (HPLC)",
+    storage: "-20°C, protected from light",
+    halfLife: "~20-30 minutes",
+    molecularFormula: "C₇₈H₁₂₅N₂₃O₂₃S₂",
+    molecularWeight: "1817.1 g/mol",
+    relatedProducts: ["aod-9604", "semaglutide"],
+  },
+  {
+    id: generateProductId("Glutathione"),
+    name: "Glutathione – Research-Grade Antioxidant",
+    category: "General health and wellness compounds",
+    categorySlug: "health-wellness",
+    categoryIds: ["health-wellness", "peptides-skin"],
+    description:
+      "Glutathione is a powerful antioxidant found in every cell in the body. It is studied for its role in detoxification, immune support, and skin health. For research purposes only.",
+    price: 39.38,
+    sizeOptions: [
+      { id: "gtt600", name: "600mg", price: 39.38, inStock: true },
+      { id: "gtt1500", name: "1500mg", price: 70.0, inStock: true },
+    ],
+    image: getProductImage("health-wellness"),
+    quantity: "600mg/1500mg",
+    chemicalName: "L-γ-glutamyl-L-cysteinyl-glycine",
+    casNumber: "70-18-8",
+    concentration: "600mg/1500mg",
+    purity: "≥98%",
+    storage: "Room temperature, protected from light",
+    halfLife: "~10 minutes in blood plasma",
+    molecularFormula: "C₁₀H₁₇N₃O₆S",
+    molecularWeight: "307.32 g/mol",
+    relatedProducts: ["nad+", "ghk-cu"],
+  },
+  {
+    id: generateProductId("L-Carnitine"),
+    name: "L-Carnitine – Research-Grade Amino Acid Derivative",
+    category: "General health and wellness compounds",
+    categorySlug: "health-wellness",
+    categoryIds: ["health-wellness", "weight-management"],
+    description:
+      "L-Carnitine is an amino acid derivative that plays a crucial role in the production of energy by transporting fatty acids into your cells' mitochondria. It is studied for its effects on fat metabolism and exercise performance. For research purposes only.",
+    price: 35.0,
+    sizeOptions: [
+      { id: "lc600", name: "600mg", price: 35.0, inStock: true },
+      { id: "lc1200", name: "1200mg", price: 43.75, inStock: true },
+    ],
+    image: getProductImage("health-wellness"),
+    quantity: "600mg/1200mg",
+    chemicalName: "(R)-3-hydroxy-4-(trimethylazaniumyl)butanoate",
+    casNumber: "541-15-1",
+    concentration: "600mg/1200mg",
+    purity: "≥99%",
+    storage: "Room temperature, cool, dry place",
+    halfLife: "~17.4 hours",
+    molecularFormula: "C₇H₁₅NO₃",
+    molecularWeight: "161.20 g/mol",
+    relatedProducts: ["aod-9604", "mots-c"],
+  },
+  {
+    id: generateProductId("Lemon-Bottle"),
+    name: "Lemon Bottle – Research-Grade Multi-Ingredient Formulation",
+    category: "Multi-ingredient formulations",
+    categorySlug: "health-wellness",
+    categoryIds: ["health-wellness", "weight-management"],
+    description:
+      "Lemon Bottle is a multi-ingredient formulation containing Riboflavin (Vitamin B2), Bromelain, and Lecithin. It is studied for its potential effects on fat metabolism and decomposition. For research purposes only.",
+    price: 105.0,
+    sizeOptions: [
+      { id: "lb10", name: "10ml", price: 105.0, inStock: true },
+    ],
+    image: getProductImage("health-wellness"),
+    quantity: "10ml",
+    chemicalName: "Riboflavin, Bromelain, Lecithin",
+    casNumber: "N/A",
+    concentration: "10ml",
+    purity: "N/A",
+    storage: "Room temperature",
+    halfLife: "N/A",
+    molecularFormula: "N/A",
+    molecularWeight: "N/A",
+    relatedProducts: ["lipo-lab-ppc-solution", "adipotide"],
+  },
+  {
+    id: generateProductId("Lipo-Lab-PPC-Solution"),
+    name: "Lipo Lab PPC Solution – Research-Grade Fat Dissolving Solution",
+    category: "Multi-ingredient formulations",
+    categorySlug: "health-wellness",
+    categoryIds: ["health-wellness", "weight-management"],
+    description:
+      "Lipo Lab PPC Solution is a multi-ingredient fat loss blend designed for research into localized fat reduction. For research purposes only.",
+    price: 43.75,
+    sizeOptions: [
+      { id: "lipo-lab-ppc-10ml", name: "10ml", price: 43.75, inStock: true },
+    ],
+    image: getProductImage("health-wellness"),
+    quantity: "10ml",
+    chemicalName: "Multi-ingredient fat loss blend",
+    casNumber: "N/A",
+    concentration: "10ml",
+    purity: "N/A",
+    storage: "Room temperature",
+    halfLife: "N/A",
+    molecularFormula: "N/A",
+    molecularWeight: "N/A",
+    relatedProducts: ["lemon-bottle", "adipotide"],
+  },
+  {
+    id: generateProductId("LC216-B-Complex-Amino-Blend"),
+    name: "LC216 (B-Complex + Amino Blend) – Research-Grade Vitamin & Amino Blend",
+    category: "Multi-ingredient formulations",
+    categorySlug: "health-wellness",
+    categoryIds: ["health-wellness"],
+    description:
+      "LC216 is a comprehensive blend of L-Carnitine, L-Arginine, Methionine, Inositol, Choline, and B-vitamins (B6, B5, B12), studied for its role in energy metabolism, liver function, and overall wellness. For research purposes only.",
+    price: 105.0,
+    sizeOptions: [
+      { id: "lc216", name: "10ml", price: 105.0, inStock: true },
+    ],
+    image: getProductImage("health-wellness"),
+    quantity: "10ml",
+    chemicalName: "L-Carnitine, L-Arginine, Methionine, Inositol, Choline, B6, B5, B12",
+    casNumber: "N/A",
+    concentration: "10ml",
+    purity: "N/A",
+    storage: "Room temperature",
+    halfLife: "N/A",
+    molecularFormula: "N/A",
+    molecularWeight: "N/A",
+    relatedProducts: ["glutathione", "l-carnitine"],
+  },
+  {
+    id: generateProductId("Botulinum-Toxin"),
+    name: "Botulinum Toxin – Research-Grade Neurotoxic Protein",
+    category: "Cosmetic Treatments",
+    categorySlug: "peptides-skin",
+    categoryIds: ["peptides-skin"],
+    description:
+      "Botulinum Toxin is a neurotoxic protein used in cosmetic research to reduce the appearance of facial wrinkles by paralyzing underlying muscles. For research purposes only.",
+    price: 140.0,
+    sizeOptions: [{ id: "xt100", name: "100IU", price: 140.0, inStock: true }],
+    image: getProductImage("peptides-skin"),
+    quantity: "100IU",
+    chemicalName: "Botulinum Toxin Type A",
+    casNumber: "93384-43-1",
+    concentration: "100IU",
+    purity: "Pharmaceutical Grade",
+    storage: "2-8°C",
+    halfLife: "~3-4 months (clinical effect)",
+    molecularFormula: "C₆₇₆₀H₁₀₄₄₇N₁₇₄₃O₂₀₁₀S₃₂",
+    molecularWeight: "~150 kDa",
+    relatedProducts: ["ghk-cu", "snap-8"],
+  },
+  {
+    id: generateProductId("Teriparatide"),
+    name: "Teriparatide (Gemtide) – Research-Grade PTH(1-34) Analog",
+    category: "Hormone regulating peptides and compounds",
+    categorySlug: "hormones-regulators",
+    categoryIds: ["hormones-regulators"],
+    description:
+      "Teriparatide is a recombinant human parathyroid hormone analog consisting of the first 34 amino acids [PTH(1-34)], the bioactive portion of the hormone. It is an effective anabolic agent used in the treatment of certain forms of osteoporosis in clinical settings. Research-use only. Packaging: 3 ml pre-filled pen. Shelf life: 24 months.",
+    price: 250.0,
+    sizeOptions: [
+      { id: "600mcg", name: "600 mcg", price: 250.0, inStock: true },
+      { id: "750mcg", name: "750 mcg", price: 300.0, inStock: true },
+    ],
+    image: getProductImage("hormones-regulators"),
+    quantity: "3 ml pre-filled pen",
+    chemicalName: "Teriparatide (rhPTH 1-34)",
+    concentration: "600 mcg / 750 mcg",
+    purity: "≥98% (HPLC)",
+    storage: "2-8°C",
+    new: true,
+    relatedProducts: ["hgh-191aa", "igf-1-lr3"],
+  },
+  {
+    id: generateProductId("Romosozumab"),
+    name: "Romosozumab – Research-Grade Sclerostin Inhibitor (Monoclonal Antibody)",
+    category: "Hormone regulating peptides and compounds",
+    categorySlug: "hormones-regulators",
+    categoryIds: ["hormones-regulators"],
+    description:
+      "Romosozumab is a humanized monoclonal antibody that binds sclerostin, studied for its dual effects of increasing bone formation and decreasing bone resorption. Investigated in the context of osteoporosis. Research-use only.",
+    price: 950.0,
+    sizeOptions: [
+      { id: "210mg", name: "210 mg", price: 950.0, inStock: true },
+    ],
+    image: getProductImage("hormones-regulators"),
+    quantity: "210 mg",
+    chemicalName: "Romosozumab-aqqg (humanized mAb)",
+    casNumber: "1280007-94-1",
+    concentration: "210 mg",
+    purity: "Pharmaceutical Grade",
+    storage: "2-8°C",
+    new: true,
+    relatedProducts: ["Teriparatide", "hgh-191aa"],
+  },
+  {
+    id: generateProductId("Mesterolone Tablets Proviron"),
+    name: "Mesterolone Tablets (Proviron) - 25mg",
+    category: "SARMs for muscle growth, strength, and recomposition",
+    categorySlug: "sarms",
+    categoryIds: ["sarms", "hormones-regulators"],
+    description:
+      "Mesterolone (Proviron) is an orally active androgenic steroid developed for research purposes. This compound is designed for laboratory testing and scientific research only. Mesterolone has been studied for its potential androgenic properties and DHT-like characteristics in preclinical models. Each tablet contains 25mg of high-purity mesterolone for consistent research applications.",
+    price: 150.0,
+    sizeOptions: [{ id: "50-tablets-25mg", name: "50 Tablets (25mg each)", price: 150.0, inStock: true }],
+    image: getProductImage("sarms"),
+    quantity: "50 Tablets (25mg each)",
+    chemicalName: "1α-Methyl-17β-hydroxy-5α-androstan-3-one",
+    casNumber: "1424-00-6",
+    concentration: "25mg per tablet",
+    purity: "≥98% (HPLC)",
+    storage: "Store in a cool, dry place, protected from light",
+    halfLife: "~12 hours",
+    molecularFormula: "C₂₀H₃₂O₂",
+    molecularWeight: "304.47 g/mol",
+    relatedProducts: ["rad-140-testolone", "mk-2866-ostarine", "yk-11-myostatin-inhibitor"],
+  },
+  {
+    id: generateProductId("needles"),
+    name: "U-100 1cc Syringe  – Sterile 1ml 31 Gauge 5/16 Inch 8mm Needle",
+    category: "Cosmetic Treatments",
+    categorySlug: "peptides-skin",
+    categoryIds: ["peptides-skin"],
+    description:
+      "20 pack 1cc syringe with 31Ga 5/16Inch 8mm is individually sealed packaging, sterile gauze pads individually sealed packaging，pack of 20.",
+    price: 950.0,
+    sizeOptions: [
+      { id: "20", name: "20 Pack", price: 30.00, inStock: true },
+      { id: "60", name: "60 Pack", price: 60.00, inStock: true },
+      { id: "100", name: "100 Pack", price: 90.00, inStock: true },
+    ],
+    image: getProductImage("peptides-skin"),
+    quantity: "20/60/100",
+    chemicalName: "N/A",
+    casNumber: "N/A",
+    concentration: "N/A",
+    purity: "Pharmaceutical Grade",
+    storage: "2-8°C",
+    new: true,
+    relatedProducts: ["Teriparatide", "hgh-191aa"],
+  },
+        // END OF NEW PRODUCTS
+]
+
+/**
+ * Get products by category slug
+ * Updated to support multiple categories
+ */
+export function getProductsByCategory(categorySlug: string): Product[] {
+  // Log for debugging
+  console.log(`Getting products for category: ${categorySlug}`)
+
+  // Filter products that match the category slug in their categoryIds array
+  const filteredProducts = products.filter((product) => {
+    // Check if the product has the category in its categoryIds array
+    return product.categoryIds.some((id) => id.toLowerCase() === categorySlug.toLowerCase())
+  })
+
+  // Log the number of products found
+  console.log(`Found ${filteredProducts.length} products in category ${categorySlug}`)
+
+  return filteredProducts
+}
+
+// Other utility functions remain unchanged
+export function getProductById(id: string) {
+  return products.find((product) => product.id === id)
+}
+
+export function getFeaturedProducts(): Product[] {
+  return products.filter((product) => product.featured)
+}
+
+export function getNewProducts(): Product[] {
+  return products.filter((product) => product.new)
+}
+
+export function getBestSellerProducts(): Product[] {
+  return products.filter((product) => product.bestSeller)
+}
+
+export function getRelatedProducts(productId: string): Product[] {
+  const product = getProductById(productId)
+  if (!product || !product.relatedProducts || product.relatedProducts.length === 0) {
+    return []
+  }
+
+  return products.filter((p) => product.relatedProducts?.includes(p.id))
+}
+
+export function searchProducts(query: string): Product[] {
+  const searchTerm = query.toLowerCase().trim()
+  if (!searchTerm) return []
+
+  return products.filter(
+    (product) =>
+      product.name.toLowerCase().includes(searchTerm) ||
+      product.category.toLowerCase().includes(searchTerm) ||
+      product.description.toLowerCase().includes(searchTerm) ||
+      (product.chemicalName && product.chemicalName.toLowerCase().includes(searchTerm)) ||
+      (product.casNumber && product.casNumber.toLowerCase().includes(searchTerm)),
+  )
+}
+
+export function getSpecificProductImage(product: Product): string {
+  // For Bacteriostatic Water
+  if (product.id === "bacteriostatic-water") {
+    return "/images/bacterial_water.webp"
+  }
+
+  // For products that include two products in one (deals)
+  if (product.name.includes("+") || (product.description && product.description.includes("combination"))) {
+    return "/images/deals.png"
+  }
+
+  // For products with multiple (2+) products (bundles)
+  if (product.id === "anabolic" || product.id === "glow" || product.categorySlug === "peptide-stacks") {
+    return "/images/bulk-bundle-products.png"
+  }
+
+  // For SARMs and other orally digested products
+  if (product.categorySlug === "sarms" || product.categorySlug === "aromatase-inhibitors") {
+    return "/images/sarms-tablet-products.webp"
+  }
+
+  // For products that use vials and/or require subcutaneous injection
+  if (
+    product.categorySlug === "peptides-muscle" ||
+    product.categorySlug === "peptides-skin" ||
+    product.categorySlug === "growth-hormone" ||
+    product.categorySlug === "weight-management" ||
+    product.categorySlug === "coenzymes"
+  ) {
+    return "/images/vials-sub-inject.png"
+  }
+
+  // Default to category image
+  return getProductImage(product.categorySlug)
+}
+
+// Helper functions for size options
+export function getDefaultSizeOption(product: Product): SizeOption | undefined {
+  if (!product.sizeOptions || product.sizeOptions.length === 0) {
+    return undefined
+  }
+  return product.sizeOptions[0]
+}
+
+export function getSizeOptionById(product: Product, sizeId: string): SizeOption | undefined {
+  if (!product.sizeOptions || product.sizeOptions.length === 0) {
+    return undefined
+  }
+  return product.sizeOptions.find((option) => option.id === sizeId)
+}
+
+/**
+ * Get all categories for a product
+ * New helper function to get category names for a product
+ */
+export function getProductCategories(product: Product): string[] {
+  return product.categoryIds
+    .map((categoryId) => {
+      const category = categories.find((cat) => cat.id === categoryId)
+      return category ? category.name : ""
+    })
+    .filter(Boolean)
+}
+
+/**
+ * Get largest size option for a product
+ */
+export function getLargestSizeOption(product: Product): SizeOption | undefined {
+  if (!product.sizeOptions || product.sizeOptions.length === 0) {
+    return undefined
+  }
+  // Return the size option with the highest price (assuming larger = more expensive)
+  return product.sizeOptions.reduce((largest, current) => 
+    current.price > largest.price ? current : largest
+  )
+}
+
+/**
+ * Get all product names for AI matching
+ */
+export function getAllProductNames(): { name: string; id: string; aliases: string[] }[] {
+  return products.map(product => ({
+    name: product.name,
+    id: product.id,
+    aliases: [
+      product.chemicalName || '',
+      product.name.toLowerCase(),
+      // Extract common peptide abbreviations
+      ...extractPeptideAbbreviations(product.name)
+    ].filter(Boolean)
+  }))
+}
+
+function extractPeptideAbbreviations(name: string): string[] {
+  const abbreviations: string[] = []
+  
+  // Common peptide patterns
+  const patterns = [
+    /([A-Z]{2,}-\d+)/g, // RAD-140, MK-677, etc.
+    /([A-Z]{3,}\d*)/g,  // BPC157, CJC1295, etc.
+    /\b([A-Z]{2,})\b/g  // HGH, IGF, etc.
+  ]
+  
+  patterns.forEach(pattern => {
+    const matches = name.match(pattern)
+    if (matches) {
+      abbreviations.push(...matches)
+    }
+  })
+  
+  return abbreviations
+}
+
+/**
+ * Helper function to generate size information for product codes
+ */
+export function generateSizeInfo(productName: string, sizeCode: string, concentration?: string): string {
+  // Extract product abbreviation from size code
+  const match = sizeCode.match(/^([A-Z]+)(\d+)/)
+  if (!match) return sizeCode
+  
+  const [, code, amount] = match
+  
+  // Common product code mappings
+  const codeMap: Record<string, string> = {
+    'RT': 'Retatrutide',
+    'TZ': 'Tirzepatide', 
+    'SZ': 'Semaglutide',
+    'CJC': 'CJC-1295',
+    'HGH': 'HGH',
+    'BPC': 'BPC-157',
+    'TB': 'TB-500',
+    'GHK': 'GHK-Cu',
+    'RAD': 'RAD-140',
+    'MK': 'MK-677',
+    'YK': 'YK-11',
+    'OST': 'Ostarine',
+    'AND': 'Andarine'
+  }
+  
+  const productFullName = codeMap[code] || code
+  return `${code} = ${productFullName} ${amount}mg`
+}

@@ -1,0 +1,1010 @@
+[
+    {
+      "code": "C250",
+      "name": "TC250(Testosterone cypionate)",
+      "quantity": "10ml x 250 mg/ml",
+      "price_1vial": "$74.80",
+      "price_10vials_plus": "$68.00",
+      "status": "avaliable"
+    },
+    {
+      "code": "E250",
+      "name": "TE250(Testosterone Enathate)",
+      "quantity": "10ml x 250 mg/ml",
+      "price_1vial": "$74.80",
+      "price_10vials_plus": "$68.00",
+      "status": "available"
+    },
+    {
+      "code": "E300",
+      "name": "TE300(Testosterone Enathate)",
+      "quantity": "10ml x 300mg/ml",
+      "price_1vial": "$81.60",
+      "price_10vials_plus": "$74.80",
+      "status": "avaliable"
+    },
+    {
+      "code": "TY300",
+      "name": "TU300(Testosterone undecanoate)",
+      "quantity": "10ml x 300mg/ml",
+      "price_1vial": "$102.00",
+      "price_10vials_plus": "$95.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "BA100",
+      "name": "TEST BASE 100(testosterone no ester)",
+      "quantity": "10ml x 100 mg/ml",
+      "price_1vial": "$74.80",
+      "price_10vials_plus": "$68.00",
+      "status": "avaliable"
+    },
+    {
+      "code": "R100",
+      "name": "TRA100(Trenbolone Acetate)",
+      "quantity": "10ml x 100 mg/ml",
+      "price_1vial": "$136.00",
+      "price_10vials_plus": "$129.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "RY100",
+      "name": "TRE100(Trenbolone Enanthate)",
+      "quantity": "10ml x 100 mg/ml",
+      "price_1vial": "$136.00",
+      "price_10vials_plus": "$129.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "R200",
+      "name": "TRE200(Trenbolone Enanthate)",
+      "quantity": "10ml x 200 mg/ml",
+      "price_1vial": "$210.80",
+      "price_10vials_plus": "$204.00",
+      "status": "avaliable"
+    },
+    {
+      "code": "RM200",
+      "name": "TRENMIX-200",
+      "quantity": "10ml x 200mg/ml",
+      "price_1vial": "$210.80",
+      "price_10vials_plus": "$204.00",
+      "status": "avaliable"
+    },
+    {
+      "code": "3R225",
+      "name": "TriTren 225",
+      "quantity": "10ml x 225mg/ml",
+      "price_1vial": "$306.00",
+      "price_10vials_plus": "$299.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "BR50",
+      "name": "TRB50(trenbolone base)",
+      "quantity": "10ml x 50mg/ml",
+      "price_1vial": "$102.00",
+      "price_10vials_plus": "$95.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "B300",
+      "name": "Blend-300",
+      "quantity": "10ml x 300mg/ml",
+      "price_1vial": "$238.00",
+      "price_10vials_plus": "$231.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "B375",
+      "name": "Blend-375",
+      "quantity": "10ml x 375mg/ml",
+      "price_1vial": "$292.40",
+      "price_10vials_plus": "$285.60",
+      "status": "avaliable"
+    },
+    {
+      "code": "B500",
+      "name": "Blend-500",
+      "quantity": "10ml x 500mg/ml",
+      "price_1vial": "$421.60",
+      "price_10vials_plus": "$414.80",
+      "status": "avaliable"
+    },
+    {
+      "code": "M100",
+      "name": "Methenolone Enanthate 100(Primobolan)",
+      "quantity": "10ml x 100 mg/ml",
+      "price_1vial": "$258.40",
+      "price_10vials_plus": "$251.60",
+      "status": "avaliable"
+    },
+    {
+      "code": "M200",
+      "name": "Methenolone Enanthate 200(Primobolan)",
+      "quantity": "10ml x 200 mg/ml",
+      "price_1vial": "$476.00",
+      "price_10vials_plus": "$469.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "NM300",
+      "name": "NANDROMIX-300",
+      "quantity": "10ml x 300mg/ml",
+      "price_1vial": "$170.00",
+      "price_10vials_plus": "$163.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "PN100",
+      "name": "NPP-100(Nandrolone PhenylPropionate)",
+      "quantity": "10ml x 100mg/ml",
+      "price_1vial": "$102.00",
+      "price_10vials_plus": "$95.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "PN200",
+      "name": "NPP-200 (Nandrolone PhenylPropionate)",
+      "quantity": "10ml x 200mg/ml",
+      "price_1vial": "$136.00",
+      "price_10vials_plus": "$129.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "SO50",
+      "name": "Stanozolol oil base 50 (winstrol)",
+      "quantity": "10ml x 50 mg/ml",
+      "price_1vial": "$74.80",
+      "price_10vials_plus": "$68.00",
+      "status": "avaliable"
+    },
+    {
+      "code": "SO100",
+      "name": "Stanozolol oil base 100 (winstrol)",
+      "quantity": "10ml x 100 mg/ml",
+      "price_1vial": "$81.60",
+      "price_10vials_plus": "$74.80",
+      "status": "avaliable"
+    },
+    {
+      "code": "SW50",
+      "name": "STANOZOLOL 50 suspension water (winstrol)",
+      "quantity": "10ml x 50mg/ml",
+      "price_1vial": "$74.80",
+      "price_10vials_plus": "$68.00",
+      "status": "avaliable"
+    },
+    {
+      "code": "SW100",
+      "name": "STANOZOLOL 100 suspension water (winstrol)",
+      "quantity": "10ml x 100mg/ml",
+      "price_1vial": "$81.60",
+      "price_10vials_plus": "$74.80",
+      "status": "avaliable"
+    },
+    {
+      "code": "U200",
+      "name": "EQUIPOISE 200( boldenone undecyleate)",
+      "quantity": "10ml x 200 mg/ml",
+      "price_1vial": "$102.00",
+      "price_10vials_plus": "$95.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "U600",
+      "name": "EQUIPOISE 600 ( boldenone undecyleate)",
+      "quantity": "10ml x 600 mg/ml",
+      "price_1vial": "$170.00",
+      "price_10vials_plus": "$163.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "BS250",
+      "name": "BC 250( boldenone cypionate)",
+      "quantity": "10ml x 250 mg/ml",
+      "price_1vial": "$108.80",
+      "price_10vials_plus": "$102.00",
+      "status": "avaliable"
+    },
+    {
+      "code": "D100",
+      "name": "masteron 100 ( Drostanolone Propionate)",
+      "quantity": "10ml x 100 mg/ml",
+      "price_1vial": "$149.60",
+      "price_10vials_plus": "$142.80",
+      "status": "avaliable"
+    },
+    {
+      "code": "D200",
+      "name": "MAST-200(Drostanolone Enanathate)",
+      "quantity": "10ml x 200 mg/ml",
+      "price_1vial": "$244.80",
+      "price_10vials_plus": "$238.00",
+      "status": "avaliable"
+    },
+    {
+      "code": "DM200",
+      "name": "MAST Blend-200",
+      "quantity": "10ml x 200mg/ml",
+      "price_1vial": "$244.80",
+      "price_10vials_plus": "$238.00",
+      "status": "avaliable"
+    },
+    {
+      "code": "DO50",
+      "name": "Dianabol-50(Methandrostenolone or Methandienone)",
+      "quantity": "10ml x 50 mg/ml",
+      "price_1vial": "$102.00",
+      "price_10vials_plus": "$95.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "OXO50",
+      "name": "Anadrol-50 (Oxymetholone )",
+      "quantity": "10 ml x 50mg/ml",
+      "price_1vial": "$102.00",
+      "price_10vials_plus": "$95.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "1T100",
+      "name": "DHB 100 (1-Testosterone cypionate, Dihydrobodenone)",
+      "quantity": "10ml x 100 mg/ml",
+      "price_1vial": "$149.60",
+      "price_10vials_plus": "$142.80",
+      "status": "avaliable"
+    },
+    {
+      "code": "MN50",
+      "name": "Trestolone acetate 50 (MENT)",
+      "quantity": "10ml x 50 mg/ml",
+      "price_1vial": "$333.20",
+      "price_10vials_plus": "$326.40",
+      "status": "avaliable"
+    },
+    {
+      "code": "HD50",
+      "name": "stanolone 50 (DHT)",
+      "quantity": "10ml x 50 mg/ml",
+      "price_1vial": "$88.40",
+      "price_10vials_plus": "$81.60",
+      "status": "avaliable"
+    },
+    {
+      "code": "RX225",
+      "name": "Ripex-225",
+      "quantity": "10ml x 225mg/ml",
+      "price_1vial": "$183.60",
+      "price_10vials_plus": "$176.80",
+      "status": "avaliable"
+    },
+    {
+      "code": "P100",
+      "name": "TP100(Testosterone Propionate)",
+      "quantity": "10ml x 100 mg/ml",
+      "price_1vial": "$68.00",
+      "price_10vials_plus": "$61.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "P200",
+      "name": "TP200(Testosterone Propionate)",
+      "quantity": "10ml x 200 mg/ml",
+      "price_1vial": "$74.80",
+      "price_10vials_plus": "$68.00",
+      "status": "avaliable"
+    },
+    {
+      "code": "SP100",
+      "name": "TS100 (Testosterone Suspension)",
+      "quantity": "10ml x 100 mg/ml",
+      "price_1vial": "$74.80",
+      "price_10vials_plus": "$68.00",
+      "status": "avaliable"
+    },
+    {
+      "code": "S400",
+      "name": "Sustanon400",
+      "quantity": "10ml x 400mg/ml",
+      "price_1vial": "$108.80",
+      "price_10vials_plus": "$102.00",
+      "status": "avaliable"
+    },
+    {
+      "code": "S250",
+      "name": "Sustanon250",
+      "quantity": "10ml x 250mg/ml",
+      "price_1vial": "$88.40",
+      "price_10vials_plus": "$81.60",
+      "status": "avaliable"
+    },
+    {
+      "code": "S450",
+      "name": "Supertest450",
+      "quantity": "10ml x 450mg/ml",
+      "price_1vial": "$129.20",
+      "price_10vials_plus": "$122.40",
+      "status": "avaliable"
+    },
+    {
+      "code": "T600",
+      "name": "Test 600",
+      "quantity": "10ml x 600mg/ml",
+      "price_1vial": "$115.60",
+      "price_10vials_plus": "$108.80",
+      "status": "avaliable"
+    },
+    {
+      "code": "H100",
+      "name": "Trx100(Trenbolone Hexahydrobenzyl Carbonate)",
+      "quantity": "10ml x 100 mg/ml",
+      "price_1vial": "$244.80",
+      "price_10vials_plus": "$238.00",
+      "status": "avaliable"
+    },
+    {
+      "code": "N200",
+      "name": "DECA200(Nandrolone Decanoate)",
+      "quantity": "10ml x 200 mg/ml",
+      "price_1vial": "$115.60",
+      "price_10vials_plus": "$108.80",
+      "status": "avaliable"
+    },
+    {
+      "code": "N300",
+      "name": "DECA300(Nandrolone Decanoate)",
+      "quantity": "10ml x 300 mg/ml",
+      "price_1vial": "$149.60",
+      "price_10vials_plus": "$142.80",
+      "status": "avaliable"
+    },
+    {
+      "code": "U300",
+      "name": "EQUIPOISE 300( boldenone undecyleate)",
+      "quantity": "10ml x 300 mg/ml",
+      "price_1vial": "$115.60",
+      "price_10vials_plus": "$108.80",
+      "status": "avaliable"
+    },
+    {
+      "code": "SDO50",
+      "name": "Superdrol 50 (Methyldrostanolone)",
+      "quantity": "10ml x 50mg/ml",
+      "price_1vial": "$102.00",
+      "price_10vials_plus": "$95.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "BM5",
+      "name": "metribolone 5mg",
+      "quantity": "10ml x 5 mg/ml",
+      "price_1vial": "$102.00",
+      "price_10vials_plus": "$95.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "EC100",
+      "name": "Estradial Cypionate 10mg",
+      "quantity": "10ml x 10 mg/ml",
+      "price_1vial": "$95.20",
+      "price_10vials_plus": "$88.40",
+      "status": "avaliable"
+    },
+    {
+      "code": "FX10",
+      "name": "Fluoxymesterone (Halotestin)",
+      "quantity": "10mg x100 tablets",
+      "price_1vial": "$435.20",
+      "price_10vials_plus": "$428.40",
+      "status": "avaliable"
+    },
+    {
+      "code": "D10",
+      "name": "Methandienone (Dianabol)DBOL",
+      "quantity": "10mg x 100 tablets",
+      "price_1vial": "$102.00",
+      "price_10vials_plus": "$95.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "D20",
+      "name": "Methandienone (Dianabol)DBOL",
+      "quantity": "20mg x 100 tablets",
+      "price_1vial": "$136.00",
+      "price_10vials_plus": "$129.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "D50",
+      "name": "Methandienone (Dianabol)DBOL",
+      "quantity": "50mg x 100 tablets",
+      "price_1vial": "$224.40",
+      "price_10vials_plus": "$217.60",
+      "status": "avaliable"
+    },
+    {
+      "code": "P10",
+      "name": "Mesterolone(Proviron)",
+      "quantity": "10mg x 100 tablets",
+      "price_1vial": "$122.40",
+      "price_10vials_plus": "$115.60",
+      "status": "avaliable"
+    },
+    {
+      "code": "P25",
+      "name": "Mesterolone(Proviron)",
+      "quantity": "25mg x 100 tablets",
+      "price_1vial": "$238.00",
+      "price_10vials_plus": "$231.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "M10",
+      "name": "Methenolone Acetate(Primobolan)",
+      "quantity": "10mg x 100 tablets",
+      "price_1vial": "$272.00",
+      "price_10vials_plus": "$265.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "M25",
+      "name": "Methenolone Acetate(Primobolan)",
+      "quantity": "25mg x 100 tablets",
+      "price_1vial": "$435.20",
+      "price_10vials_plus": "$428.40",
+      "status": "avaliable"
+    },
+    {
+      "code": "M50",
+      "name": "Methenolone Acetate(Primobolan)",
+      "quantity": "50mg x 100 tablets",
+      "price_1vial": "$850.00",
+      "price_10vials_plus": "$843.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "X10",
+      "name": "ANAVAR(Oxandrolone)",
+      "quantity": "10mg x 100 tablets",
+      "price_1vial": "$122.40",
+      "price_10vials_plus": "$115.60",
+      "status": "avaliable"
+    },
+    {
+      "code": "X25",
+      "name": "ANAVAR(Oxandrolone)",
+      "quantity": "25mg x 100 tablets",
+      "price_1vial": "$204.00",
+      "price_10vials_plus": "$197.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "X50",
+      "name": "ANAVAR(Oxandrolone)",
+      "quantity": "50mg x 100 tablets",
+      "price_1vial": "$380.80",
+      "price_10vials_plus": "$374.00",
+      "status": "avaliable"
+    },
+    {
+      "code": "OXP50",
+      "name": "ANADROL (Oxymetholone)",
+      "quantity": "50mg x100 tablets",
+      "price_1vial": "$224.40",
+      "price_10vials_plus": "$217.60",
+      "status": "avaliable"
+    },
+    {
+      "code": "W10",
+      "name": "Winstrol( Stanozolol)",
+      "quantity": "10mg x 100 tablets",
+      "price_1vial": "$102.00",
+      "price_10vials_plus": "$95.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "W20",
+      "name": "Winstrol( Stanozolol)",
+      "quantity": "20mg x 100 tablets",
+      "price_1vial": "$136.00",
+      "price_10vials_plus": "$129.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "W50",
+      "name": "Winstrol( Stanozolol)",
+      "quantity": "50mg x 100 tablets",
+      "price_1vial": "$224.40",
+      "price_10vials_plus": "$217.60",
+      "status": "avaliable"
+    },
+    {
+      "code": "CT10",
+      "name": "Turinabol(Chlordehydromethyltestosterone)",
+      "quantity": "10mg x 100 tablets",
+      "price_1vial": "$122.40",
+      "price_10vials_plus": "$115.60",
+      "status": "avaliable"
+    },
+    {
+      "code": "CT25",
+      "name": "Turinabol(Chlordehydromethyltestosterone)",
+      "quantity": "25mg x 100 tablets",
+      "price_1vial": "$204.00",
+      "price_10vials_plus": "$197.20",
+      "status": "avaliable"
+    },
+    {
+      "code": "CT50",
+      "name": "Turinabol(Chlordehydromethyltestosterone)",
+      "quantity": "50mg x 100 tablets",
+      "price_1vial": "$380.80",
+      "price_10vials_plus": "$374.00",
+      "status": "avaliable"
+    },
+    {
+      "code": "1TT10",
+      "name": "DHB (1-Testosterone cypionate)",
+      "quantity": "10 mg x 100 tablets",
+      "price_1vial": "$190.40",
+      "price_10vials_plus": "$183.60",
+      "status": "avaliable"
+    },
+    {
+      "code": "FB100",
+      "name": "Flibanserin",
+      "quantity": "100mg x 30 tablets",
+      "price_1vial": "$88.40",
+      "price_10vials_plus": "$81.60",
+      "status": "avaliable"
+    },
+    {
+      "code": "M1T10",
+      "name": "M1T(17a-Methyl-1-testosterone)",
+      "quantity": "10mg x 100 tablets",
+      "price_1vial": "$149.60",
+      "price_10vials_plus": "$142.80",
+      "status": "avaliable"
+    },
+    {
+      "code": "CB40",
+      "name": "Clenbuterol",
+      "quantity": "40mcg x 100 tablets",
+      "price_1vial": "$88.40",
+      "price_10vials_plus": "$81.60",
+      "status": "available"
+    },
+    {
+      "code": "CD50",
+      "name": "Clomiphene(Clomid)",
+      "quantity": "50mg x 100 tablets",
+      "price_1vial": "$115.60",
+      "price_10vials_plus": "$108.80",
+      "status": "available"
+    },
+    {
+      "code": "LZ25",
+      "name": "Letrazole",
+      "quantity": "2.5mg x100 tablets",
+      "price_1vial": "$95.20",
+      "price_10vials_plus": "$88.40",
+      "status": "available"
+    },
+    {
+      "code": "SD10",
+      "name": "Superdrol (Methyldrostanolone)",
+      "quantity": "10mg x 100 tablets",
+      "price_1vial": "$190.40",
+      "price_10vials_plus": "$183.60",
+      "status": "available"
+    },
+    {
+      "code": "325",
+      "name": "T3 (Liothyronine sodium)",
+      "quantity": "25mcg x 100 tablets",
+      "price_1vial": "$88.40",
+      "price_10vials_plus": "$81.60",
+      "status": "available"
+    },
+    {
+      "code": "340",
+      "name": "T3 (Liothyronine sodium)",
+      "quantity": "40mcg x 100 tablets",
+      "price_1vial": "$95.20",
+      "price_10vials_plus": "$88.40",
+      "status": "available"
+    },
+    {
+      "code": "440",
+      "name": "T4",
+      "quantity": "40mcg x 100 tablets",
+      "price_1vial": "$95.20",
+      "price_10vials_plus": "$88.40",
+      "status": "available"
+    },
+    {
+      "code": "T20",
+      "name": "Tamoxifen( Nolvadex)",
+      "quantity": "20 mg x 100 tablets",
+      "price_1vial": "$95.20",
+      "price_10vials_plus": "$88.40",
+      "status": "available"
+    },
+    {
+      "code": "XE25",
+      "name": "Aromasin( Exemestane)",
+      "quantity": "25 mg x 100 tablets",
+      "price_1vial": "$210.80",
+      "price_10vials_plus": "$204.00",
+      "status": "available"
+    },
+    {
+      "code": "DEX1",
+      "name": "Anastrozole(Arimidex)",
+      "quantity": "1 mg x 100 tablets",
+      "price_1vial": "$88.40",
+      "price_10vials_plus": "$81.60",
+      "status": "available"
+    },
+    {
+      "code": "SD100",
+      "name": "Viagra",
+      "quantity": "100 mg x 100 tablets",
+      "price_1vial": "$88.40",
+      "price_10vials_plus": "$81.60",
+      "status": "available"
+    },
+    {
+      "code": "DT20",
+      "name": "Cialis",
+      "quantity": "20 mg x 100 tablets",
+      "price_1vial": "$88.40",
+      "price_10vials_plus": "$81.60",
+      "status": "available"
+    },
+    {
+      "code": "B70",
+      "name": "Cialis",
+      "quantity": "70mg x100 tablets",
+      "price_1vial": "$129.20",
+      "price_10vials_plus": "$122.40",
+      "status": "available"
+    },
+    {
+      "code": "SB20",
+      "name": "SALBUTAMOL",
+      "quantity": "20 mg x 100 tablets",
+      "price_1vial": "$95.20",
+      "price_10vials_plus": "$88.40",
+      "status": "available"
+    },
+    {
+      "code": "MSB10",
+      "name": "Methylstenbolone",
+      "quantity": "10 mg x 100 tablets",
+      "price_1vial": "$285.60",
+      "price_10vials_plus": "$278.80",
+      "status": "available"
+    },
+    {
+      "code": "T500",
+      "name": "Tesofensine",
+      "quantity": "500 mcg x 100 tablets",
+      "price_1vial": "$238.00",
+      "price_10vials_plus": "$231.20",
+      "status": "available"
+    },
+    {
+      "code": "L40",
+      "name": "LGD-4033(Ligandrol)",
+      "quantity": "10mg x 100 tablets",
+      "price_1vial": "$183.60",
+      "price_10vials_plus": "$176.80",
+      "status": "available"
+    },
+    {
+      "code": "M6",
+      "name": "MK-677(Ibutamoren)",
+      "quantity": "10mg x 100 tablets",
+      "price_1vial": "$204.00",
+      "price_10vials_plus": "$197.20",
+      "status": "available"
+    },
+    {
+      "code": "S9",
+      "name": "SR9009",
+      "quantity": "10mg x 100 tablets",
+      "price_1vial": "$251.60",
+      "price_10vials_plus": "$244.80",
+      "status": "available"
+    },
+    {
+      "code": "R14",
+      "name": "RAD140",
+      "quantity": "10mg x 100 tablets",
+      "price_1vial": "$258.40",
+      "price_10vials_plus": "$251.60",
+      "status": "available"
+    },
+    {
+      "code": "M28",
+      "name": "Ostarine(MK-2866)",
+      "quantity": "25mg x 100 tablets",
+      "price_1vial": "$183.60",
+      "price_10vials_plus": "$176.80",
+      "status": "available"
+    },
+    {
+      "code": "A10",
+      "name": "AICAR",
+      "quantity": "10mg x 100 tablets",
+      "price_1vial": "$312.80",
+      "price_10vials_plus": "$306.00",
+      "status": "available"
+    },
+    {
+      "code": "S040",
+      "name": "Andarine S4",
+      "quantity": "25mg x 100 tablets",
+      "price_1vial": "$183.60",
+      "price_10vials_plus": "$176.80",
+      "status": "available"
+    },
+    {
+      "code": "G50",
+      "name": "GW-501516(Cardarine)",
+      "quantity": "10mg x 100 tablets",
+      "price_1vial": "$176.80",
+      "price_10vials_plus": "$170.00",
+      "status": "available"
+    },
+    {
+      "code": "Y1",
+      "name": "YK11",
+      "quantity": "10mg x 100 tablets",
+      "price_1vial": "$435.20",
+      "price_10vials_plus": "$428.40",
+      "status": "available"
+    },
+    {
+      "code": "CG25",
+      "name": "Cabergoline",
+      "quantity": "0.25mg x 100 tablets",
+      "price_1vial": "$435.20",
+      "price_10vials_plus": "$428.40",
+      "status": "available"
+    },
+    {
+      "code": "FS5",
+      "name": "Finasteride",
+      "quantity": "5mg x 100 tablets",
+      "price_1vial": "$129.20",
+      "price_10vials_plus": "$122.40",
+      "status": "available"
+    },
+    {
+      "code": "PDN10",
+      "name": "prednisone",
+      "quantity": "10mg x 100 tablets",
+      "price_1vial": "$102.00",
+      "price_10vials_plus": "$95.20",
+      "status": "available"
+    },
+    {
+      "code": "PND",
+      "name": "DNP",
+      "quantity": "200mg x 50pcs",
+      "price_1vial": "$306.00",
+      "price_10vials_plus": "$299.20",
+      "status": "available"
+    },
+    {
+      "code": "B157",
+      "name": "BPC157",
+      "quantity": "500mcg x 100pcs",
+      "price_1vial": "$306.00",
+      "price_10vials_plus": "$292.40",
+      "status": "available"
+    },
+    {
+      "code": "SM500",
+      "name": "Semaglutide",
+      "quantity": "500mcg x 25 pcs",
+      "price_1vial": "$95.20",
+      "price_10vials_plus": "$88.40",
+      "status": "available"
+    },
+    {
+      "code": "SMM3",
+      "name": "Semaglutide",
+      "quantity": "3mg x 25pcs",
+      "price_1vial": "$340.00",
+      "price_10vials_plus": "$333.20",
+      "status": "available"
+    },
+    {
+      "code": "SMM7",
+      "name": "Semaglutide",
+      "quantity": "7mg x 25pcs",
+      "price_1vial": "$578.00",
+      "price_10vials_plus": "$571.20",
+      "status": "available"
+    },
+    {
+      "code": "SM7",
+      "name": "Semaglutid",
+      "quantity": "7mg x 30pcs",
+      "price_1vial": "$544.00",
+      "price_10vials_plus": "$510.00",
+      "status": "available"
+    },
+    {
+      "code": "SM14",
+      "name": "Semaglutide",
+      "quantity": "14mg x 30pcs",
+      "price_1vial": "$816.00",
+      "price_10vials_plus": "$748.00",
+      "status": "available"
+    },
+    {
+      "code": "TR500",
+      "name": "Tirzepatide",
+      "quantity": "500mcg x 25pcs",
+      "price_1vial": "$102.00",
+      "price_10vials_plus": "$95.20",
+      "status": "available"
+    },
+    {
+      "code": "AMQ50",
+      "name": "5-amino-1mq",
+      "quantity": "50mg x 25pcs",
+      "price_1vial": "$190.40",
+      "price_10vials_plus": "$183.60",
+      "status": "available"
+    },
+    {
+      "code": "EC25",
+      "name": "Enclomiphene",
+      "quantity": "25mg x 100pcs",
+      "price_1vial": "$435.20",
+      "price_10vials_plus": "$428.40",
+      "status": "available"
+    },
+    {
+      "code": "TM40",
+      "name": "Telmisartan",
+      "quantity": "40mg x 100pcs",
+      "price_1vial": "$122.40",
+      "price_10vials_plus": "$115.60",
+      "status": "available"
+    },
+    {
+      "code": "FAN1",
+      "name": "Finasteride",
+      "quantity": "1mg x 100pcs",
+      "price_1vial": "$115.60",
+      "price_10vials_plus": "$108.80",
+      "status": "available"
+    },
+    {
+      "code": "DUT1",
+      "name": "Dutasteride",
+      "quantity": "1mg x 100pcs",
+      "price_1vial": "$115.60",
+      "price_10vials_plus": "$108.80",
+      "status": "available"
+    },
+    {
+      "code": "LV5",
+      "name": "Ivermectin",
+      "quantity": "5mg x 100pcs",
+      "price_1vial": "$102.00",
+      "price_10vials_plus": "$95.20",
+      "status": "available"
+    },
+    {
+      "code": "SLU250",
+      "name": "SLU-PP-332",
+      "quantity": "250mcg x 100tablets",
+      "price_1vial": "$115.60",
+      "price_10vials_plus": "$108.80",
+      "status": "available"
+    },
+    {
+      "code": "SLU500",
+      "name": "SLU-PP-332",
+      "quantity": "500mcg x 100pcs",
+      "price_1vial": "$142.80",
+      "price_10vials_plus": "$136.00",
+      "status": "available"
+    },
+    {
+      "code": "SLU1000",
+      "name": "SLU-PP-332",
+      "quantity": "1000mcg x 100pcs",
+      "price_1vial": "$156.40",
+      "price_10vials_plus": "$149.60",
+      "status": "available"
+    },
+    {
+      "code": "SLU5",
+      "name": "SLU-PP-332",
+      "quantity": "5mg x 100pcs",
+      "price_1vial": "$244.80",
+      "price_10vials_plus": "$238.00",
+      "status": "available"
+    },
+    {
+      "code": "SLU20",
+      "name": "SLU-PP-332",
+      "quantity": "20mg x 100tablets",
+      "price_1vial": "$462.40",
+      "price_10vials_plus": "$455.60",
+      "status": "available"
+    },
+    {
+      "code": "MD5",
+      "name": "Minoxidil",
+      "quantity": "5mg x 100pcs",
+      "price_1vial": "$88.40",
+      "price_10vials_plus": "$81.60",
+      "status": "available"
+    },
+    {
+      "code": "KP500",
+      "name": "KPV",
+      "quantity": "500mcg x 100pcs",
+      "price_1vial": "$306.00",
+      "price_10vials_plus": "$292.40",
+      "status": "available"
+    },
+    {
+      "code": "BB500",
+      "name": "BPC 500mcg+TB 500mcg",
+      "quantity": "1000mcg x 100pcs",
+      "price_1vial": "$918.00",
+      "price_10vials_plus": "$884.00",
+      "status": "available"
+    },
+    {
+      "code": "BAM50",
+      "name": "BAM15",
+      "quantity": "50mg x 60pcs",
+      "price_1vial": "$748.00",
+      "price_10vials_plus": "$714.00",
+      "status": "available"
+    },
+    {
+      "code": "SB300",
+      "name": "slupp-332 250mcg+BAM15 50mcg",
+      "quantity": "300mcg x 60pcs",
+      "price_1vial": "$190.40",
+      "price_10vials_plus": "$183.60",
+      "status": "available"
+    },
+    {
+      "code": "ORF6",
+      "name": "Orforglipron",
+      "quantity": "6mg x 100pcs",
+      "price_1vial": "$714.00",
+      "price_10vials_plus": "$680.00",
+      "status": "available"
+    },
+    {
+      "code": "ORF12",
+      "name": "Orforglipron",
+      "quantity": "12mg x100pcs",
+      "price_1vial": "$1258.00",
+      "price_10vials_plus": "$1224.00",
+      "status": "available"
+    },
+    {
+      "code": "DHA20",
+      "name": "Dihexa",
+      "quantity": "20mg x 25pcs",
+      "price_1vial": "$714.00",
+      "price_10vials_plus": "$680.00",
+      "status": "available"
+    }
+  ]

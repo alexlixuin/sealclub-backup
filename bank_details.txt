@@ -1,0 +1,7 @@
+
+
+USD|Community Federal Savings Bank|Kareshma Kumar|8314510747|CMFGUS33|026073150|123456|89-16 Jamaica Ave, Woodhaven, NY, 11421, United States
+EUR|Wise|Kareshma Kumar|905275501427|TRWIBEB1XXX|BE48905275501427|304050|Rue du Trône 100, 3rd floor, Brussels, 1050, Belgium
+GBP|Wise Payments Limited|Kareshma Kumar|55587526|TRWIGB2LXXX|GB94TRWI23080155587526|23-08-01|1st Floor, Worship Square, 65 Clifton Street, London, EC2A 4JE, United Kingdom
+CAD|Wise Payments Canada Inc.|Kareshma Kumar|200117210326|TRWICAW1XXX|62116001|456789|99 Bank Street, Suite 1420, Ottawa, ON, K1P 1H4, Canada
+NZD|Wise Payments Ltd. - New Zealand Branch|Kareshma Kumar|04-2021-0229882-01|TRWINZ21XXX|123-456|1st Floor, Worship Square, 65 Clifton Street, London, EC2A 4JE, United Kingdom
